@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration {
             $table->integer('lookup_user_type')->unsigned();
             $table->string('full_name');
             $table->string('company_name')->nullable();
-            $table->string('password');
+            $table->string('password', 64);
             $table->string('email');
             $table->string('address')->nullable();
             $table->string('company_address')->nullable();
