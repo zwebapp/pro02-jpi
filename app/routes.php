@@ -16,3 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('admin', 'Dashboard@get_index');
+
+
+Route::get('admin/categories', 'Categories@get_index');
+Route::get('admin/categories/add', 'Categories@add');

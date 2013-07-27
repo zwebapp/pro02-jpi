@@ -4,12 +4,14 @@
 	"keywords": ["framework", "laravel"],
 	"require": {
 		"laravel/framework": "4.0.*",
-		 "way/generators": "dev-master"
+		 "way/generators": "dev-master",
+		 "cartalyst/sentry": "2.0.*"
 	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
 			"app/controllers",
+			"app/controllers/back",
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",

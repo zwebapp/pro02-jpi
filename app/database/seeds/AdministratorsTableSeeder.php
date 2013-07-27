@@ -8,8 +8,8 @@ class AdministratorsTableSeeder extends Seeder {
     	DB::table('administrators')->delete();
 
         $administrators = array(
-        	['name' => 'Saitama-sensei', 'username' => 'admin', 'password' => Hash::make('adminadmin'), 'created_at' => new DateTime],
-        	['name' => 'Genos Cyborg', 'username' => 'genos', 'password' => Hash::make('genosgenos'), 'created_at' => new DateTime]
+        	['name' => 'Saitama-sensei', 'created_at' => new DateTime, 'user_id' => 1],
+        	['name' => 'Genos Cyborg', 'created_at' => new DateTime, 'user_id' => 2]
         );
 
       // Uncomment the below to run the seeder
