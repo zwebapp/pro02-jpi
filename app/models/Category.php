@@ -3,9 +3,9 @@
 class Category extends Eloquent {
 
 
-		// Instance declarations
-		// 
-		protected $fillable = array( 'name', 'description' );
+	// Instance declarations
+	// 		
+    protected $fillable = [ 'name', 'description' ];
 
     protected $guarded = array();
 

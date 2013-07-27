@@ -13,7 +13,7 @@ class Categories extends BaseController {
 	}
 
 
-	public function get_index() {
+	public function index() {
 	
 		// Show the categories page
 		return View::make('admin.categories');
@@ -21,34 +21,23 @@ class Categories extends BaseController {
 	}
 
 
-
 	public function add() {
 		
-		$input = Input::get();
+		$validation = new Services\Validators\Category;
 
-		$validator = Validator::make($input, array('name' => 'required'));
+		if ($validation->fails()) {
 
-		// Fail early validation
-		if ($validator->fails()) {
-
-			if (Request::ajax()) 
-				return Response::json(['success' => false, 'errors' => $validator->getMessageBag()->toArray()]);
-			
-			return Redirect::to('admin/categories')->withErrors($validator);			
-
+			return Request::ajax() ? 
+						Response::json(['success' => false, 'errors' => $validation->errors]) : 
+						Redirect::back()->withInput()->withErrors($validation->errors);
 		}
 
-		// If passes the validation
-		$category              = new Category;
+		// Create a new category then. . . 
+		Category::create(Input::all());
 
-		$category->name        = $input['name'];
-		$category->description = $input['description'];
-
-		$category->save();
-
-		if (Request::ajax()) {
-			return Response::json(['success' => true]);
-		}
+		return Request::ajax() ?
+			 		Response::json(['sucess' => true]) :
+			 		Redirect::action('Categories@index');
 
 	}
 

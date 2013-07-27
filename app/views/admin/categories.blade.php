@@ -7,11 +7,7 @@
 
 @section('content')
 
-  <?php 
-  if(isset($errors)) {
-    echo "<pre>" . print_r($errors->all(), TRUE) . "</pre>";
-  }
-  ?>
+  @include('_partials.errors')
 
   <div class="row-fluid">
     <div class="span3">
@@ -88,22 +84,12 @@
      console.log('gone here -- begin');
     });    
 
-    $(document).on("eldarion-ajax:error", function(evt, $el, data) {
-     console.log('gone here -- error');
-    });
-
-    $(document).on("eldarion-ajax:complete", function(evt, $el, data) {
-     console.log('gone here -- complete');
-    });
-
     $(document).on("eldarion-ajax:success", function(evt, $el, data) {
       console.log('gone here -- success');
       console.log(data);
 
       // var $node = $($el.data("prepend-inner"));
       // $node.data(data.html + $node.html());
-
-
     });
 
   });

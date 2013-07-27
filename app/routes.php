@@ -19,5 +19,5 @@ Route::get('/', function()
 Route::get('admin', 'Dashboard@get_index');
 
 
-Route::get('admin/categories', 'Categories@get_index');
+Route::get('admin/categories', 'Categories@index');
 Route::get('admin/categories/add', 'Categories@add');
