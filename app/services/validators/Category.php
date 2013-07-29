@@ -8,7 +8,7 @@ class Category extends Validator {
 	
 	public static $rules = [
 
-		'name' => 'required'
+		'name' => 'required',
 
 	];
 

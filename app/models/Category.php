@@ -5,11 +5,14 @@ class Category extends Eloquent {
 
 	// Instance declarations
 	// 		
-    protected $fillable = [ 'name', 'description' ];
-
-    protected $guarded = array();
-
-    public static $rules = array();
+    protected $fillable   = [ 'name', 'description' ];
+    
+    protected $guarded    = array();
+    
+    // Allowing soft delete
+    protected $softDelete = true;
+    
+    public static $rules  = array();
 
 
 

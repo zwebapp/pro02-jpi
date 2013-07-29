@@ -50,6 +50,7 @@ Administrator Page | JPI @show</title>
     {{ HTML::script('public/js/jquery-2.0.3.min.js') }}
     {{ HTML::script('public/js/bootstrap.min.js') }}
     {{ HTML::script('public/js/eldarion-ajax.min.js') }}
+    {{ HTML::script('public/js/admin.js') }}
 
     @section('extraJs')
     @show
