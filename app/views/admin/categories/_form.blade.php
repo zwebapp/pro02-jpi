@@ -1,15 +1,9 @@
-
-{{ Form::open(array('url' => isset($edit) ? 'admin/categories/update' : 'admin/categories/save', 'method' => 'get', 'class' => 'ajax form-horizontal')) }}
+{{ Form::open(array('action' => isset($edit) ? 'Categories@update' : 'Categories@save', 'method' => 'get', 'class' => 'ajax form-horizontal')) }}
 
 <div class="wrapper">
   <h4> {{ isset($edit) ? "Edit " : "Add new " }} category </h4>
   
-  @if (Session::has('save'))
-    <div class="alert alert-success"><strong>Yes!</strong> New category added! <small> Wanna add more? </small></div>
-  @elseif (Session::has('update'))
-    <div class="alert alert-success"><strong>Dang!</strong> Category updated!</div>
-  @endif
-
+  {{ Notification::showSuccess('<div class="alert alert-success"> :message </div>') }}
 
   @if ($errors->has('name'))
   <div class="control-group error">

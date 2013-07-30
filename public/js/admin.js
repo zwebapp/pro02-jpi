@@ -2,8 +2,11 @@ jQuery('document').ready(function($){
 
     // Global modal functions
     $(document).on("eldarion-ajax:begin", function(evt, $el) {
+
       $('#preload').removeClass('hidden');
+
     });    
+
 
     $(document).on("eldarion-ajax:success", function(evt, $el, data) {
 
@@ -11,10 +14,19 @@ jQuery('document').ready(function($){
       
     });
 
+    $('#modalBox').delegate('input[type="submit"]', 'click', function(ev){
+        $('#preload').removeClass('hidden');
+    });
 
     $('#modalBox').on('hide', function () {
       document.location.reload(true);
-    })
+    });
+
+    $('#dataTable').find('.name').find('a').click(function(){
+
+      $('#modalBox').addClass($(this).closest('tr').attr('class'));
+
+    });
 
 
     $('#dataTable').find('.delete').click(function(e){
@@ -24,8 +36,8 @@ jQuery('document').ready(function($){
     $('#dataTable').find('.delete').popover({
       'placement': 'left',
       'html' : true,
-      'content' : '<small>Are you sure you want to remove this item?</small><br/>' 
-                  + '<small class="text-error"> This action cannot be reverted.</small>' 
+      'content' : '<small>Are you sure you want to remove this item? <strong>All the related content under this will be unassigned</strong>.</small><br/>' 
+                  + '<small class="text-error">You cannot revert this action!</small>' 
                   + '<div class="op-buttons">' 
                       + '<button type="button" class="btn btn-mini btn-success yep">Yep!</button> ' 
                       + '<button type="button" class="btn btn-mini cancel">Cancel</button> ' 

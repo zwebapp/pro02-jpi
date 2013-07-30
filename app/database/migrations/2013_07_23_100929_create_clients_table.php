@@ -30,8 +30,8 @@ class CreateClientsTable extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('lookup_user_type')->references('id')->on('lookups');
-            $table->foreign('lookup_security_question')->references('id')->on('lookups');
+            $table->foreign('lookup_user_type')->references('id')->on('lookups')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('lookup_security_question')->references('id')->on('lookups')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 

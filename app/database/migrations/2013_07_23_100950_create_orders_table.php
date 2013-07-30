@@ -23,9 +23,9 @@ class CreateOrdersTable extends Migration {
             $table->dateTime('approved_at');
             $table->timestamps();
 
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('lookup_status')->references('id')->on('lookups');
-            $table->foreign('approved_by')->references('id')->on('administrators');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreign('lookup_status')->references('id')->on('lookups')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreign('approved_by')->references('id')->on('administrators')->onDelete('CASCADE')->onUpdate('CASCADE');;
 
         });
     }

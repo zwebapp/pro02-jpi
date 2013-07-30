@@ -24,12 +24,10 @@ class Category extends Eloquent {
 
     }
 
-
-
-    // Public actions
-    // 
-    public function FunctionName($value='')
+    public function delete()
     {
-    	# code...
+        Product::where("category_id", $this->id)->update(['category_id' => NULL]);
+        return parent::delete();
     }
+
 }

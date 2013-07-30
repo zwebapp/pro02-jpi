@@ -11,24 +11,36 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+
+// Administrator - Categories Pages
+// -------------------------------------------------------------
+Route::model('category', 'Category');
+Route::get('admin/categories/{category}/remove', function(Category $category){
+	$category->delete();
 });
+Route::get('admin/categories/{id}/edit','Categories@edit' );
+Route::get('admin/categories/update', 'Categories@update');
+Route::get('admin/categories/save', 'Categories@save' );
+Route::get('admin/categories/add', 'Categories@add' );
+Route::get('admin/categories', 'Categories@index');
+// end Administrator -------------------------------------------
+
+
+// Administrator - Product Pages
+// -------------------------------------------------------------
+Route::model('product', 'Product');
+Route::get('admin/products/{product}/remove', function(Product $category){
+	$category->delete();
+});
+Route::get('admin/products/{id}/edit','Products@edit' );
+Route::get('admin/products/{id}/show','Products@show' );
+Route::post('admin/products/update', 'Products@update');
+Route::post('admin/products/save', 'Products@save' );
+Route::get('admin/products/add', 'Products@add' );
+Route::get('admin/products', 'Products@index');
 
 Route::get('admin', 'Dashboard@get_index');
 
-// Administrator - Categories Pages
-Route::model('category', 'Category');
-Route::get('admin/categories', 'Categories@index');
-Route::get('admin/categories/add', 'Categories@add' );
-Route::get('admin/categories/save', 'Categories@save' );
-
-// Update an item based on the given id
-Route::get('admin/categories/{id}/edit','Categories@edit' );
-Route::get('admin/categories/update', 'Categories@update');
-
-// Remove an item based on the given category
-Route::get('admin/categories/{category}/remove', function(Category $category){
-	$category->delete();
+Route::get('/', function() {
+	return View::make('hello');
 });

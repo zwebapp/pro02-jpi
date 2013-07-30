@@ -17,7 +17,7 @@ class CreateLookupsTable extends Migration {
             $table->string('value');
             $table->integer('lookupTypes_id')->unsigned();
 
-            $table->foreign('lookupTypes_id')->references('id')->on('lookupTypes');
+            $table->foreign('lookupTypes_id')->references('id')->on('lookupTypes')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
