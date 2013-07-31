@@ -10,9 +10,9 @@
   <div class="main-wrapper">
     <div class="row-fluid">
       <div class="span3">
-        <a href="{{ url('admin/products/add') }}" class="btn btn-primary" data-toggle="modal" data-target="#modalBox" id="addNewProduct">Add new product</a>
+        <a href="{{ url('admin/products/add') }}" class="btn btn-primary" data-toggle="modal" id="addNewProduct">Add new product</a>
       </div>
-      <div class="span4"> {{ Notification::showSuccess('<div class="alert alert-success"> :message </div>') }}</div>
+      <div class="span4"> </div>
       <div class="span5">
         @include('_partials.search')
       </div>
@@ -29,15 +29,15 @@
           </thead>
           <tbody>
           @foreach (Product::orderBy('name')->get() as $product)
-            <tr class="item_{{ $product->id }}">
+            <tr class="item_{{ $product->id }} {{ !$product->is_active ? 'unpublished' : '' }} ">
               <td class="thumbs">
                 {{ HTML::image(isset($product->image) ?  json_decode($product->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', ['class' => 'thumbnail']) }}
               </td>
-              <td class="name">{{ link_to('admin/products/' . $product->id  .'/show/', $product->name, [ 'data-toggle' => 'modal',  'data-target' => '#modalBox' ]) }} </td>
+              <td class="name">{{ link_to('admin/products/' . $product->id  .'/show/', $product->name, [ 'data-toggle' => 'modal']) }} </td>
               <td class="category">  {{  isset($product->category->name) ? $product->category->name : 'Uncategorized'  }}</td>
               <td class="nolink">
-                <a class="btn btn-mini edit rowlink" href="{{ url('admin/products/' . $product->id) . '/edit' }}" data-toggle="modal" data-target="#modalBox" title="Edit"><i class="icon-pencil"></i> </a>
-                <a class="btn btn-mini delete rowlink" href="{{ url('admin/products/' . $product->id . '/remove')  }}" ><i class="icon-trash"></i> </a>
+                <a class="btn btn-mini edit" href="{{ url('admin/products/' . $product->id) . '/edit' }}" data-toggle="modal" title="Edit"><i class="icon-pencil"></i> </a>
+                <a class="btn btn-mini delete" href="{{ url('admin/products/' . $product->id . '/remove')  }}" ><i class="icon-trash"></i> </a>
               </td>
             </tr>
           @endforeach

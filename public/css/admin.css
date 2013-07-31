@@ -18,10 +18,12 @@ body { padding: 10px 0 0 0;	}
 .modal .modal-body .ajax-wrapper { padding: 50px; text-align: center; }
 
 .modal .modal-body .wrapper.show { overflow: hidden; }
+.modal .modal-body .switch { vertical-align: middle; }
+
 .show .left{ float: left; }
 .show .left.preview{ width: 250px; }
 .show .left.info {height: 250px;margin: 0 0 0 20px;position: relative;width: 245px;}
-.show .info p { max-height: 140px; }
+.show .info p { max-height: 140px; overflow: hidden; }
 .show .bottom { bottom: 0; position: absolute; }
 .show .bottom h5 { margin-bottom: 40px; }
 .show img { width: 250px; }
@@ -35,3 +37,6 @@ body { padding: 10px 0 0 0;	}
 .table .thumbnail { height: 35px; margin: auto; padding: 0; width: 35px; }
 
 .form-horizontal textarea { height: 50px; }
+
+#dataTable.table tr.unpublished td { background-color: #CCCCCC; }
+#dataTable.table tr.unpublished *{ color: #999999; }

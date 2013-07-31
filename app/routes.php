@@ -34,6 +34,7 @@ Route::get('admin/products/{product}/remove', function(Product $category){
 });
 Route::get('admin/products/{id}/edit','Products@edit' );
 Route::get('admin/products/{id}/show','Products@show' );
+Route::get('admin/products/state', 'Products@state');
 Route::post('admin/products/update', 'Products@update');
 Route::post('admin/products/save', 'Products@save' );
 Route::get('admin/products/add', 'Products@add' );

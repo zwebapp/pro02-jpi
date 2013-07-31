@@ -8,8 +8,9 @@ Administrator Page | JPI @show</title>
     <!-- CSS are placed here -->
     {{ HTML::style('public/css/bootstrap.min.css') }}
     {{ HTML::style('public/css/bootstrap-responsive.min.css') }}
-    {{ HTML::style('public/css/admin.css') }}
+    {{ HTML::style('public/css/bootstrap-switch.css') }}
     
+    {{ HTML::style('public/css/admin.css') }}
     
     @section('additionalCss')
     @show
@@ -50,6 +51,8 @@ Administrator Page | JPI @show</title>
     {{ HTML::script('public/js/jquery-2.0.3.min.js') }}
     {{ HTML::script('public/js/bootstrap.min.js') }}
     {{ HTML::script('public/js/eldarion-ajax.min.js') }}
+    {{ HTML::script('public/js/bootstrap-switch.min.js') }}
+    {{ HTML::script('public/js/ajaxfileupload.js') }}
     {{ HTML::script('public/js/admin.js') }}
 
     @section('extraJs')

@@ -1,3 +1,54 @@
+function changeModalBody(options) {
+  var defaults = {
+
+    target : $('#modalBox'),
+    type : 'GET',
+    url : '/',
+    afterAjax: function (){}
+
+  }
+
+  options = $.extend({}, defaults, options);
+
+  options.target.modal('show');
+
+  $.ajax({
+
+    type : options.type,
+    url : options.url,
+  }).done(function (html) {
+
+    options.target.find('.modal-body').html(html);
+    options.target.find('.for-switch').wrap('<div class="switch switch-small" />').parent().bootstrapSwitch();
+    options.target.find('.switch').on('switch-change', function(e, data){
+
+      $.get($(data.el).attr('data-stateUrl'), { id : data.el.val(), is_active : data.value });
+
+    });
+
+    options.afterAjax();
+  });
+
+}
+
+function ajaxFileUpload(options){
+  $.ajaxFileUpload ({
+    url: options.url + '?' + options.data,
+    secureuri: false,
+    dataType: 'html',
+    fileElementId: options.fileElementId,
+
+    success: function (data, status){
+      $('.modal .modal-body').html(data.responseText);
+    },
+
+     error: function (data, status, e) {
+      $('.modal .modal-body').html(data.responseText);
+    }
+  })
+}
+
+
 jQuery('document').ready(function($){
 
     // Global modal functions
@@ -22,9 +73,58 @@ jQuery('document').ready(function($){
       document.location.reload(true);
     });
 
+
+    $('[data-toggle="modal"]:not([data-target])').click(function(e) {
+      e.preventDefault();
+
+      changeModalBody({ 
+        url : $(this).attr('href'), 
+        afterAjax: function(){
+          $('.with-upload').submit(function(e){
+
+            e.preventDefault();
+
+            ajaxFileUpload({
+              url : $(this).attr('action'),
+              fileElementId: $(this).find('input[type="file"]').attr('id'),
+              data: $(this).serialize()
+            })
+
+          });
+        } 
+      });
+
+    });
+
+    $('#modalBox').delegate('.show-edit', 'click', function(e){
+      e.preventDefault();
+      changeModalBody({ url : $(this).attr('href'), 
+        afterAjax: function(){
+          $('.with-upload').submit(function(e){
+
+            e.preventDefault();
+
+            ajaxFileUpload({
+              url : $(this).attr('action'),
+              fileElementId: $(this).find('input[type="file"]').attr('id'),
+              data: $(this).serialize()
+            })
+
+          });
+        } 
+      });
+    });
+
+
     $('#dataTable').find('.name').find('a').click(function(){
 
       $('#modalBox').addClass($(this).closest('tr').attr('class'));
+
+    });
+
+    $('#modalShow').delegate('.show-edit', 'click', function(){
+
+      $('#modalShow').modal('hide');
 
     });
 
@@ -58,5 +158,8 @@ jQuery('document').ready(function($){
 
     });
 
+    $('#modalBox').on('enableUpload','.elements',function(){
+      $('#productsForm').fileUpload();
+    });
 
   });

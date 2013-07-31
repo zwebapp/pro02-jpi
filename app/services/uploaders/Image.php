@@ -14,6 +14,7 @@ class Image {
 		'mini'   => ['height' => 35, 'width' => 35],
 		'thumb'  => ['height' => 50, 'width' => 50],
 		'avatar' => ['height' => 140, 'width' => 140],
+		'modal' => ['height' => 250, 'width' => 250],
 
 	];
 	

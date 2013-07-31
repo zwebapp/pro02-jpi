@@ -30,9 +30,6 @@ class Products extends BaseController {
 	}
 
 
-
-
-
 	public function save() {
 		
 		$validation = new Services\Validators\Product;		
@@ -57,12 +54,20 @@ class Products extends BaseController {
 		Notification::success('<strong>Yes!</strong> New product added! <small> Wanna add more? </small>');
 		
 		if (Request::ajax()) {
-			return Redirect::action('Products@add');
 		}
 		
-		return Redirect::action('Products@index');
+		return Redirect::action('Products@add');
+		//return Redirect::action('Products@index');
 	}
 
+
+
+
+	public function state() {
+		$product = Product::find(Input::get('id'));
+		$product->is_active = filter_var(Input::get('is_active'), FILTER_VALIDATE_BOOLEAN);
+		$product->save();
+	}
 
 
 
@@ -94,13 +99,12 @@ class Products extends BaseController {
 
 		Notification::success('<strong>Dang!</strong> Product updated!');
 
-		// return Redirect::action('Products@edit', ['id' => Input::get('id')])->withInput();
 		
 		if (Request::ajax()) {
-			return Redirect::action('Products@add');
 		}
+		return Redirect::action('Products@edit', ['id' => Input::get('id')])->withInput();
 		
-		return Redirect::action('Products@index');
+		// return Redirect::action('Products@index');
 
 	}
 
