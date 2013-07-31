@@ -19,7 +19,7 @@ function changeModalBody(options) {
 
     options.target.find('.modal-body').html(html);
     options.target.find('.for-switch').wrap('<div class="switch switch-small" />').parent().bootstrapSwitch();
-    options.target.find('.switch').on('switch-change', function(e, data){
+    options.target.find('.wrapper:not(.show) .switch').on('switch-change', function(e, data){
       $(data.el).val(data.value);
     });
     options.target.find('.show .switch').on('switch-change', function(e, data){

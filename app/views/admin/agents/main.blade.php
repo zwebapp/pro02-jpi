@@ -32,7 +32,7 @@
           <tbody>
           @foreach ($agents as $agent)
             <?php $info = json_decode($agent->information); ?>
-            <tr class="item_{{ $agent->id }}">
+            <tr class="item_{{ $agent->id }} {{ !$agent->is_active ? 'unpublished' : '' }}">
               <td class="name">{{ $info->full_name }}</td>
               <td class="contact_no">{{ $info->email_address }}</td>
               <td class="address">{{ $info->address }}</td>
