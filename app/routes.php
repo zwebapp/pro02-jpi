@@ -23,7 +23,7 @@ Route::get('admin/categories/update', 'Categories@update');
 Route::get('admin/categories/save', 'Categories@save' );
 Route::get('admin/categories/add', 'Categories@add' );
 Route::get('admin/categories', 'Categories@index');
-// end Administrator -------------------------------------------
+// end Administrator - Categories Pages -------------------------------------------
 
 
 // Administrator - Product Pages
@@ -39,9 +39,37 @@ Route::post('admin/products/update', 'Products@update');
 Route::post('admin/products/save', 'Products@save' );
 Route::get('admin/products/add', 'Products@add' );
 Route::get('admin/products', 'Products@index');
+// end Administrator - Product Pages -------------------------------------------
+ 
 
+// Administrator - Agents Pages
+// -------------------------------------------------------------
+Route::model('agent', 'Agent');
+Route::get('admin/agents/{agent}/remove', function(Agent $agent){
+	$agent->delete();
+});
+Route::get('admin/agents/{id}/edit','Agents@edit' );
+Route::get('admin/agents/{id}/show','Agents@show' );
+Route::get('admin/agents/state', 'Agents@state');
+Route::get('admin/agents/update', 'Agents@update');
+Route::get('admin/agents/save', 'Agents@save' );
+Route::get('admin/agents/add', 'Agents@add' );
+Route::get('admin/agents', 'Agents@index');
+
+// end Administrator - Agents Pages -------------------------------------------
+
+
+
+
+
+// Administrator - Dashboard
+// -------------------------------------------------------------
 Route::get('admin', 'Dashboard@get_index');
+// end Administrator - Dashboard -------------------------------
 
+
+// Client - Dashboard
+// -------------------------------------------------------------
 Route::get('/', function() {
 	return View::make('hello');
 });

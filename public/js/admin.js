@@ -3,7 +3,6 @@ function changeModalBody(options) {
 
     target : $('#modalBox'),
     type : 'GET',
-    url : '/',
     afterAjax: function (){}
 
   }
@@ -21,10 +20,15 @@ function changeModalBody(options) {
     options.target.find('.modal-body').html(html);
     options.target.find('.for-switch').wrap('<div class="switch switch-small" />').parent().bootstrapSwitch();
     options.target.find('.switch').on('switch-change', function(e, data){
+      $(data.el).val(data.value);
+    });
+    options.target.find('.show .switch').on('switch-change', function(e, data){
 
       $.get($(data.el).attr('data-stateUrl'), { id : data.el.val(), is_active : data.value });
 
     });
+    
+    // options.target.find('.datePicker').datetimepicker({pickTime: false});
 
     options.afterAjax();
   });
@@ -62,6 +66,7 @@ jQuery('document').ready(function($){
     $(document).on("eldarion-ajax:success", function(evt, $el, data) {
 
       $('.modal .modal-body').html(data.responseText);
+      $('.for-switch').wrap('<div class="switch switch-small" />').parent().bootstrapSwitch();
       
     });
 
@@ -79,7 +84,7 @@ jQuery('document').ready(function($){
 
       changeModalBody({ 
         url : $(this).attr('href'), 
-        afterAjax: function(){
+        afterAjax: function() {
           $('.with-upload').submit(function(e){
 
             e.preventDefault();

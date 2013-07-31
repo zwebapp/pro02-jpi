@@ -5,11 +5,7 @@
   
   {{ Notification::showSuccess('<div class="alert alert-success"> :message </div>') }}
 
-  @if ($errors->has('name'))
-  <div class="control-group error">
-  @else 
-  <div class="control-group">
-  @endif
+  <div class="control-group {{ ($errors->has('name') ? 'error' : '' ) }} ">
     <label class="control-label" for="name">Name: <span class="label label-important">Required</span> </label>
     <div class="controls">
       {{ Form::text('name', isset($name) ? $name : '', array('class' => 'span3', 'placeholder' => 'e.g: Tissue Papers')) }}

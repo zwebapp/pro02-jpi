@@ -48,7 +48,7 @@
 </div>
 
 <div class="modal-footer">
-  {{ HTML::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
+  {{ HMTL::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
 
   {{ isset($id) ? Form::hidden('id', $id) : '' }}
 

@@ -8,10 +8,10 @@ class AgentsTableSeeder extends Seeder {
     	DB::table('agents')->delete();
 
         $agents = array(
-        	['information' => '{full_name: \'Piri Piri Warrior\', address: \'C-City\', age: 24, contact_no: \'99933300\'}', 'created_at' => new DateTime],
-        	['information' => '{full_name: \'Super Alloy Darkshine\', address: \'A-City\', age: 30, contact_no: \'99933300\'}', 'created_at' => new DateTime],
-        	['information' => '{full_name: \'Metal Knight\', address: \'H-City\', age: 55, contact_no: \'99933300\'}', 'created_at' => new DateTime],
-        	['information' => '{full_name: \'Light Speed Slash\', address: \'A-City\', age: 20, contact_no: \'99933300\'}', 'created_at' => new DateTime]
+        	['information' => json_encode(['full_name' => 'Piri Piri Warrior', 'email_address' => 'piri2@onepunch.com', 'address' => 'C-City', 'birthday' => '03-27-1988', 'contact_no' => '99933300']), 'created_at' => new DateTime],
+        	['information' => json_encode(['full_name' => 'Super Alloy Darkshine', 'email_address' => 'superall@onepunch.com', 'address' => 'A-City', 'birthday' => '03-27-1988', 'contact_no' => '99933300']), 'created_at' => new DateTime],
+        	['information' => json_encode(['full_name' => 'Metal Knight', 'email_address' => 'mk@onepunch.com', 'address' => 'H-City', 'birthday' => '03-27-1988', 'contact_no' => '99933300']), 'created_at' => new DateTime],
+        	['information' => json_encode(['full_name' => 'Light Speed Slash', 'email_address' => 'light@onepunch.com', 'address' => 'A-City', 'birthday' => '03-27-1988', 'contact_no' => '99933300']), 'created_at' => new DateTime]
         );
 
       // Uncomment the below to run the seeder
