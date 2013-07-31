@@ -141,8 +141,8 @@ jQuery('document').ready(function($){
     $('#dataTable').find('.delete').popover({
       'placement': 'left',
       'html' : true,
-      'content' : '<small>Are you sure you want to remove this item? <strong>All the related content under this will be unassigned</strong>.</small><br/>' 
-                  + '<small class="text-error">You cannot revert this action!</small>' 
+      'content' : '<small>Are you sure you want to remove this item? <strong>All the related contents under this item will going to be unassigned</strong>.</small><br/>' 
+                  + '<br/> <small class="text-error">You cannot revert this action!</small>' 
                   + '<div class="op-buttons">' 
                       + '<button type="button" class="btn btn-mini btn-success yep">Yep!</button> ' 
                       + '<button type="button" class="btn btn-mini cancel">Cancel</button> ' 

@@ -1,7 +1,7 @@
 <?php 
 
 
-class Dashboard extends BaseController {
+class Admin extends BaseController {
 
 
 	/**
@@ -13,7 +13,7 @@ class Dashboard extends BaseController {
 	}
 
 
-	public function get_index(){
+	public function index(){
 	
 		return View::make('admin.dashboard');
 
