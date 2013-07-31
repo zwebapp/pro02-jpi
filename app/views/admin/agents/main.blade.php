@@ -30,7 +30,7 @@
             <th>Actions</th>
           </thead>
           <tbody>
-          @foreach (Agent::all() as $agent)
+          @foreach ($agents as $agent)
             <?php $info = json_decode($agent->information); ?>
             <tr class="item_{{ $agent->id }}">
               <td class="name">{{ $info->full_name }}</td>
@@ -46,6 +46,7 @@
           @endforeach
           </tbody>
         </table>
+        {{ $agents->links() }}
       </div>
     </div>
   </div>

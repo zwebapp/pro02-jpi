@@ -7,7 +7,7 @@ class Agents extends BaseController {
 	public function index() {
 	
 		// Show the categories page
-		return View::make('admin.agents.main');
+		return View::make('admin.agents.main', ['agents' => Agent::paginate(10)]);
 
 	}
 

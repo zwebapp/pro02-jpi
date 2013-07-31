@@ -28,7 +28,7 @@
             <th>Actions</th>
           </thead>
           <tbody>
-          @foreach (Product::orderBy('name')->get() as $product)
+          @foreach ($products as $product)
             <tr class="item_{{ $product->id }} {{ !$product->is_active ? 'unpublished' : '' }} ">
               <td class="thumbs">
                 {{ HTML::image(isset($product->image) ?  json_decode($product->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', ['class' => 'thumbnail']) }}
@@ -43,6 +43,7 @@
           @endforeach
           </tbody>
         </table>
+        {{ $products->links() }}
       </div>
     </div>
   </div>

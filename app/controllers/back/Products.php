@@ -6,7 +6,7 @@ class Products extends BaseController {
 
 	// Show the products page
 	public function index() {
-		return View::make('admin.products.main');
+		return View::make('admin.products.main', ['products' => Product::orderBy('name')->paginate(5)]);
 	}
 
 
