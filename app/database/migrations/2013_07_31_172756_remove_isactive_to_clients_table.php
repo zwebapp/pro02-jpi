@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class RemoveIsActiveToClientsTable extends Migration {
+class RemoveIsactiveToClientsTable extends Migration {
 
     /**
      * Run the migrations.

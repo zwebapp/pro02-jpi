@@ -1,20 +1,19 @@
 function changeModalBody(options) {
-  var defaults = {
 
+  var defaults = {
     target : $('#modalBox'),
     type : 'GET',
     afterAjax: function (){}
-
   }
 
   options = $.extend({}, defaults, options);
-
   options.target.modal('show');
 
   $.ajax({
 
     type : options.type,
     url : options.url,
+
   }).done(function (html) {
 
     options.target.find('.modal-body').html(html);
@@ -35,7 +34,7 @@ function changeModalBody(options) {
 
 }
 
-function ajaxFileUpload(options){
+function modalAjaxUpload(options){
   $.ajaxFileUpload ({
     url: options.url + '?' + options.data,
     secureuri: false,
@@ -48,8 +47,15 @@ function ajaxFileUpload(options){
 
      error: function (data, status, e) {
       $('.modal .modal-body').html(data.responseText);
+      $('.modal').find('form').submit(function() {
+        modalAjaxUpload({
+          url           : $(this).attr('action'),
+          data          : $(this).serialize(),
+          fileElementId : $(this).find('input[type="file"]').attr('id')
+        }); 
+      });
     }
-  })
+  });
 }
 
 
@@ -64,18 +70,29 @@ jQuery('document').ready(function($){
 
 
     $(document).on("eldarion-ajax:success", function(evt, $el, data) {
-
       $('.modal .modal-body').html(data.responseText);
       $('.for-switch').wrap('<div class="switch switch-small" />').parent().bootstrapSwitch();
       
     });
 
-    $('#modalBox').delegate('input[type="submit"]', 'click', function(ev){
+
+    $('#modalBox').delegate('input[type="submit"]', 'click', function() {
+
         $('#preload').removeClass('hidden');
+
     });
 
+
     $('#modalBox').on('hide', function () {
+
       document.location.reload(true);
+
+    });
+    
+    $('#modalBox').on('submit', 'form.with-upload', function(e) {
+
+      e.preventDefault();
+
     });
 
 
@@ -89,7 +106,7 @@ jQuery('document').ready(function($){
 
             e.preventDefault();
 
-            ajaxFileUpload({
+            modalAjaxUpload({
               url : $(this).attr('action'),
               fileElementId: $(this).find('input[type="file"]').attr('id'),
               data: $(this).serialize()
@@ -100,25 +117,35 @@ jQuery('document').ready(function($){
       });
 
     });
+
 
     $('#modalBox').delegate('.show-edit', 'click', function(e){
       e.preventDefault();
-      changeModalBody({ url : $(this).attr('href'), 
+
+      changeModalBody({ 
+        url : $(this).attr('href'), 
         afterAjax: function(){
           $('.with-upload').submit(function(e){
-
             e.preventDefault();
-
-            ajaxFileUpload({
-              url : $(this).attr('action'),
-              fileElementId: $(this).find('input[type="file"]').attr('id'),
-              data: $(this).serialize()
+            modalAjaxUpload({
+              url           : $(this).attr('action'),
+              data          : $(this).serialize(),
+              fileElementId : $(this).find('input[type="file"]').attr('id')
             })
-
           });
-        } 
+        }
+
       });
+
     });
+
+
+
+
+
+
+
+
 
 
     $('#dataTable').find('.name').find('a').click(function(){

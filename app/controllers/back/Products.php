@@ -38,8 +38,12 @@ class Products extends BaseController {
 
 			return Redirect::action('Products@add')->withInput()->withErrors($validation->errors);
 
+		$inputs = Input::all();
+
+		$inputs['category_id'] = empty($inputs['category_id']) ? NULL : $inputs['category_id'];
+
 		// Create a new category then. . . 	
-		$product = Product::create(Input::all());
+		$product = Product::create($inputs);
 		 
 		if (Input::hasFile('image')) {
 
@@ -80,11 +84,15 @@ class Products extends BaseController {
 			return Redirect::action('Products@edit', ['id' => Input::get('id')])->withInput()->withErrors($validation->errors);
 		}
 
-		$product = Product::find(Input::get('id'));
+		$inputs = Input::all();
 
-		$product->name = Input::get('name');
-		$product->description = Input::get('description');
-		$product->category_id = Input::get('category_id');
+		$inputs['category_id'] = empty($inputs['category_id']) ? NULL : $inputs['category_id'];
+		
+		$product = Product::find($inputs['id']);
+
+		$product->name = $inputs['name'];
+		$product->description = $inputs['description'];
+		$product->category_id = $inputs['category_id'];
 
 		if (Input::hasFile('image')) {
 

@@ -42,3 +42,9 @@ body { padding: 10px 0 0 0;	}
 
 #dataTable.table tr.unpublished td { background-color: #CCCCCC; }
 #dataTable.table tr.unpublished *{ color: #999999; }
+
+
+
+.email-panel h3 { margin: 0 }
+.email-panel .wrapper { background-color: #EEEEEE; padding: 35px; }
+.email-panel .wrapper form { text-align: right; }

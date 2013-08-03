@@ -5,5 +5,5 @@
     <a href="{{ action('Categories@index') }}" class="btn btn-large btn-block">Categories</a>
     <a href="#" class="btn btn-large btn-block">Clients</a>
     <a href="{{ action('Agents@index') }}" class="btn btn-large btn-block">Agents</a>
-    <a href="#" class="btn btn-large btn-block">Administrators</a>
+    <a href="{{ action('Admin@manage') }}" class="btn btn-large btn-block">Manage</a>
 </div><!--/.well -->

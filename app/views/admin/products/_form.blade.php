@@ -53,7 +53,7 @@
   {{ isset($id) ? Form::hidden('id', $id) : '' }}
 
   {{ Form::button('Close', array('data-dismiss' => 'modal', 'aria-hidden' => 'true', 'class' => 'btn')) }}
-  {{ Form::submit(isset($edit) ? 'Update' : 'Add Product', array('class' => 'btn btn-primary', 'data-refresh' => '.modal-body')) }}
+  {{ Form::submit(isset($edit) ? 'Update' : 'Add Product', array('class' => 'btn btn-primary')) }}
 </div>
 
 {{ Form::close() }}

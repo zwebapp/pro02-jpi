@@ -11,24 +11,28 @@
 |
 */
 
-
-
 Route::filter('auth', function() {
  if (Auth::guest()) return Redirect::to('admin/login');
 });
 
+
 Route::get('admin/login', function() {
  return View::make('layouts.back.login');
 });
+
 
 Route::post('admin/login', function(){
 	 // get POST data
 	$userdata = ['username' => Input::get('username'),'password' => Input::get('password'), 'is_client' => false, 'is_active' => true];
 
  	if ( Auth::attempt($userdata) ) {
- 		User::find(Auth::user()->id)->update(['last_logged_in' => new DateTime]);
+ 		$user = User::find(Auth::user()->id);
+ 		$user->last_logged_in =  new DateTime;
+ 		$user->save();
+
 		return Redirect::intended('admin');
  	}
+
  	return Redirect::to('admin/login')->with('login_errors', true);
 });
 
@@ -81,7 +85,19 @@ Route::group(array('before' => 'auth'), function () {
 
 // end Agents Pages -------------------------------------------
 
+// Manage Pages
+// -------------------------------------------------------------
+	Route::model('user', 'User');
+	Route::get('admin/manage/accounts/{user}/remove', function(User $user){
+		$user->delete();
+	});
 	Route::get('admin', 'Admin@index');
+	Route::get('admin/manage', 'Admin@manage');
+	Route::get('admin/manage/accounts/{id}/edit', 'Admin@edit');
+	Route::post('admin/manage/updateSettings', 'Admin@updateSettings');
+	Route::post('admin/manage/update', 'Admin@update');
+	Route::post('admin/manage/save', 'Admin@save' );
+	Route::get('admin/manage/add', 'Admin@add');
 	
 	Route::get('/logout', function() {
 		Auth::logout();

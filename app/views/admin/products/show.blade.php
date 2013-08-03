@@ -4,9 +4,9 @@
     {{ HTML::image( isset($product->image) ? json_decode($product->image)->modal : 'public/img/no-image-product.jpg', $product->name)}}
   </div>
   <div class="left info" style="float:left">    
-    <p class="description">{{ $product->description }}</p>
+    <p class="description">{{ $product->description ?: '' }}</p>
     <div class="bottom">
-      <h5>{{ $product->category->name}}</h5>
+      <h5>{{ isset($product->category->name) ? $product->category->name : 'Uncategorized'}}</h5>
       <a class="btn btn-large btn-primary show-edit" href="{{ url('admin/products/' . $product->id) . '/edit' }}" data-toggle="modal" title="Edit">Update this product</a>
     </div>
   </div>

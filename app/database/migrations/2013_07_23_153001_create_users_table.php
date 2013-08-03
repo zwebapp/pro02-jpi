@@ -16,8 +16,9 @@ class CreateUsersTable extends Migration {
             $table->increments('id');
             $table->string('username');
 			$table->string('password', 64);
-			$table->boolean('is_client');
+			$table->boolean('is_client')->default(0);
 			$table->datetime('last_logged_in');
+            $table->softDeletes();
         });
     }
 

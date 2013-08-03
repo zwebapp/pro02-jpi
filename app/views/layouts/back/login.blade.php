@@ -51,7 +51,7 @@ Administrator Page | JPI @show</title>
 
     <div class="container">
 
-      {{ Form::open() }}
+      {{ Form::open(['class' => 'form-signin']) }}
         <h2 class="form-signin-heading">Please sign in</h2>
          <!-- check for login errors flash var -->
         @if (Session::has('login_errors'))

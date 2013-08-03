@@ -5,8 +5,10 @@ class Administrator extends Eloquent {
 
     public static $rules = array();
 
+    protected $fillable = [ 'name', 'user_id' ];
+
     public function user()
     {
-    	$this->belongsTo('User');
+    	return $this->belongsTo('User');
     }
 }

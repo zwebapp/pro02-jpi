@@ -5,7 +5,9 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	protected	$fillable = ['username', 'password', 'last_logged_in'];
+	protected	$fillable = ['username', 'password', 'is_active', 'is_client'];
+
+	protected $softDelete = true;
 
 	public $timestamps = false;
 
@@ -21,7 +23,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password');
+	// protected $hidden = array('password');
 
 	/**
 	 * Get the unique identifier for the user.
@@ -53,14 +55,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
-	public function administrators()
+	public function administrator()
 	{
-		$this->hasMany('administrator');
+		return $this->hasOne('administrator');
 	}
 
-	public function clients()
+	public function client()
 	{
-		$this->hasMany('clients');
+		return $this->hasOne('client');
 	}
 
 }
