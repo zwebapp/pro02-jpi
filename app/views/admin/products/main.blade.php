@@ -19,11 +19,12 @@
     </div>
     <div class="row-fluid">
       <div class="span12">
-        <h5>Product List</h5>
+        <h4>Products List</h4>
         <table id="dataTable" class="table table-hover table-condensed table-striped">
           <thead>
             <th>&nbsp;</th>
             <th>Product</th>
+            <th>Description</th>
             <th>Category</th>
             <th>Actions</th>
           </thead>
@@ -34,6 +35,7 @@
                 {{ HTML::image(isset($product->image) ?  json_decode($product->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', ['class' => 'thumbnail']) }}
               </td>
               <td class="name">{{ link_to('admin/products/' . $product->id  .'/show/', $product->name, [ 'data-toggle' => 'modal']) }} </td>
+              <td class="description">{{ $product->description }}</td>
               <td class="category">  {{  isset($product->category->name) ? $product->category->name : 'Uncategorized'  }}</td>
               <td class="nolink">
                 <a class="btn btn-mini edit" href="{{ url('admin/products/' . $product->id) . '/edit' }}" data-toggle="modal" title="Edit"><i class="icon-pencil"></i> </a>

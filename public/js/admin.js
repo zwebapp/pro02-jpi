@@ -26,7 +26,6 @@ function changeModalBody(options) {
       $.get($(data.el).attr('data-stateUrl'), { id : data.el.val(), is_active : data.value });
 
     });
-    
     // options.target.find('.datePicker').datetimepicker({pickTime: false});
 
     options.afterAjax();
@@ -193,5 +192,11 @@ jQuery('document').ready(function($){
     $('#modalBox').on('enableUpload','.elements',function(){
       $('#productsForm').fileUpload();
     });
+
+
+    $('.client-selector').click(function(){
+      $('.modal-body').find('#preload').removeClass('hidden');
+    });
+    
 
   });

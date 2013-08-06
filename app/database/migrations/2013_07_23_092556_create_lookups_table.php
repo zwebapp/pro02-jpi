@@ -15,9 +15,9 @@ class CreateLookupsTable extends Migration {
         Schema::create('lookups', function(Blueprint $table) {
             $table->increments('id');
             $table->string('value');
-            $table->integer('lookupTypes_id')->unsigned();
+            $table->integer('lookup_type_id')->unsigned();
 
-            $table->foreign('lookupTypes_id')->references('id')->on('lookupTypes')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('lookup_type_id')->references('id')->on('lookup_types');
         });
     }
 

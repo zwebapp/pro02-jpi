@@ -8,20 +8,20 @@ class LookupsTableSeeder extends Seeder {
     	DB::table('lookups')->delete();
 
         $lookups = array(
-        	['lookupTypes_id' => 1, 'value' => 'Pending'],
-        	['lookupTypes_id' => 1, 'value' => 'Rejected'],
-        	['lookupTypes_id' => 1, 'value' => 'For Review'],
-        	['lookupTypes_id' => 1, 'value' => 'Approved'],
-        	['lookupTypes_id' => 1, 'value' => 'Closed'],
+        	['lookup_type_id' => 1, 'value' => 'Pending'],
+        	['lookup_type_id' => 1, 'value' => 'Rejected'],
+        	['lookup_type_id' => 1, 'value' => 'For Review'],
+        	['lookup_type_id' => 1, 'value' => 'Approved'],
+        	['lookup_type_id' => 1, 'value' => 'Closed'],
 
-        	['lookupTypes_id' => 2, 'value' => 'Personal'],
-        	['lookupTypes_id' => 2, 'value' => 'Business'],
+        	['lookup_type_id' => 2, 'value' => 'Personal'],
+        	['lookup_type_id' => 2, 'value' => 'Business'],
 
-        	['lookupTypes_id' => 3, 'value' => 'What is the name of your first pet?'],
-        	['lookupTypes_id' => 3, 'value' => 'What is your mother\'s maiden name?'],
-        	['lookupTypes_id' => 3, 'value' => 'What is your favorite food?'],
-        	['lookupTypes_id' => 3, 'value' => 'Where did you grow up?'],
-        	['lookupTypes_id' => 3, 'value' => 'Who is your bestfriend?']
+        	['lookup_type_id' => 3, 'value' => 'What is the name of your first pet?'],
+        	['lookup_type_id' => 3, 'value' => 'What is your mother\'s maiden name?'],
+        	['lookup_type_id' => 3, 'value' => 'What is your favorite food?'],
+        	['lookup_type_id' => 3, 'value' => 'Where did you grow up?'],
+        	['lookup_type_id' => 3, 'value' => 'Who is your bestfriend?']
         );
 
         // Uncomment the below to run the seeder

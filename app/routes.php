@@ -85,6 +85,25 @@ Route::group(array('before' => 'auth'), function () {
 
 // end Agents Pages -------------------------------------------
 
+
+// Clients Pages
+// -------------------------------------------------------------
+	Route::model('client', 'Client');
+	Route::get('admin/clients/{id}/edit','Clients@edit' );
+	Route::get('admin/clients/addPersonal', 'Clients@addPersonal');
+	Route::get('admin/clients/addBusiness', 'Clients@addBusiness');
+	Route::get('admin/clients/update', 'Clients@update');
+	Route::post('admin/clients/save', 'Clients@save');
+	Route::get('admin/clients', 'Clients@index');
+
+// end Agents Pages -------------------------------------------
+
+
+
+
+
+
+
 // Manage Pages
 // -------------------------------------------------------------
 	Route::model('user', 'User');

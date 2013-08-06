@@ -82,7 +82,7 @@ class Admin extends BaseController {
 
 	public function update()
 	{
-		$validation = new Services\Validators\AdminAccount;
+		$validation = new Services\Validators\AdminAccount([Input::get('name'), Input::get('username'), Input::get('is_active')]);
 
 		if ($validation->fails()) {
 			return Redirect::action('Admin@edit', ['id' => Input::get('id')])->withInput()->withErrors($validation->errors);
@@ -101,7 +101,7 @@ class Admin extends BaseController {
 		
 		Notification::success('<strong>Dang!</strong> Administrator account updated!');
 
-		return Redirect::action('Admin@eadmin', ['id' => Input::get('id')])->withInput();
+		return Redirect::action('Admin@edit', ['id' => Input::get('id')]);
 
 	}
 

@@ -14,6 +14,7 @@
       <span class="help-inline">{{ $errors->first('username') }}</span>
     </div>
   </div>
+  @if (!isset($edit))
   <div class="control-group {{ ($errors->has('password') ? 'error' : '' ) }} ">
     <label class="control-label" for="password">Password: <span class="label label-important">Required</span> </label>
     <div class="controls">
@@ -28,8 +29,10 @@
       <span class="help-inline">{{ $errors->first('password_confirmation') }}</span>
     </div>
   </div>
+  @endif
+
   <div class="control-group {{ ($errors->has('name') ? 'error' : '' ) }} ">
-    <label class="control-label" for="name">name: <span class="label label-important">Required</span> </label>
+    <label class="control-label" for="name">Name: <span class="label label-important">Required</span> </label>
     <div class="controls">
       {{ Form::text('name', isset($name) ? $name : '', array('class' => 'span3', 'placeholder' => 'e.g: John Doe')) }}
       <span class="help-inline">{{ $errors->first('name') }}</span>
@@ -39,7 +42,7 @@
   <div class="control-group">
     <label class="control-label" for="is_active">Activate: </label>
     <div class="controls">
-      {{ Form::checkbox('is_active', true , $user->is_active ?: true , ['class' => 'for-switch']) }}
+      {{ Form::checkbox('is_active', true ,isset( $user->is_active ) ? $user->is_active : true , ['class' => 'for-switch']) }}
     </div>
   </div>
 

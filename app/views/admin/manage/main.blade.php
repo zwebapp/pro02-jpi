@@ -17,10 +17,12 @@
 		</div>
 		<div class="span9 accounts">
 			<div class="main-wrapper">
+        <h3>Administrator Accounts</h3>
+        <p>Below are the list of user accounts for this system. </p>
         <div class="row-fluid">
 				  <a href="{{ url('admin/manage/add') }}" class="btn btn-primary" data-toggle="modal">Add new accounts</a>
         </div>
-
+  
 				<table id="dataTable" class="table table-hover table-condensed table-striped">
           <thead>
             <th>Name</th>
@@ -29,14 +31,14 @@
             <th>Actions</th>
           </thead>
           <tbody>
-          @foreach (Administrator::all() as $admin)
-            <tr class="item_{{ $admin->id }} {{ !$admin->user->is_active ? 'unpublished' : '' }}">
-              <td class="name">{{ $admin->name }}</td>
-              <td class="username">{{ $admin->user->username }}</td>
-              <td class="last_logged_in">{{ $admin->user->last_logged_in }}</td>
+          @foreach (User::where('is_client', false)->get() as $user)
+            <tr class="item_{{ $user->id }} {{ !$user->is_active ? 'unpublished' : '' }}">
+              <td class="name">{{ $user->administrator->name }}</td>
+              <td class="username">{{ $user->username }}</td>
+              <td class="last_logged_in">{{ $user->last_logged_in }}</td>
               <td>
-                <a class="btn btn-mini edit" href="{{ url('admin/manage/accounts/' . $admin->user->id . '/edit') }}" data-toggle="modal" title="Edit"><i class="icon-pencil"></i> </a>
-                <a class="btn btn-mini delete" href="{{ url('admin/manage/accounts/' . $admin->user->id . '/remove')  }}" ><i class="icon-trash"></i> </a>
+                <a class="btn btn-mini edit" href="{{ url('admin/manage/accounts/' . $user->id . '/edit') }}" data-toggle="modal" title="Edit"><i class="icon-pencil"></i> </a>
+                <a class="btn btn-mini delete" href="{{ url('admin/manage/accounts/' . $user->id . '/remove')  }}" ><i class="icon-trash"></i> </a>
               </td>
             </tr>
           @endforeach

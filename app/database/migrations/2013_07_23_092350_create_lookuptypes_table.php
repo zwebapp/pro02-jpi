@@ -12,7 +12,7 @@ class CreateLookuptypesTable extends Migration {
      */
     public function up()
     {
-        Schema::create('lookupTypes', function(Blueprint $table) {
+        Schema::create('lookup_types', function(Blueprint $table) {
             $table->increments('id');
             $table->string('type');
             $table->softDeletes();
@@ -27,7 +27,7 @@ class CreateLookuptypesTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('lookupTypes');
+        Schema::drop('lookup_types');
     }
 
 }

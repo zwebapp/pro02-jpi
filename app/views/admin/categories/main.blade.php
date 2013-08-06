@@ -20,6 +20,7 @@
     </div>
     <div class="row-fluid">
       <div class="span12">
+        <h4>Categories List</h4>
         <table id="dataTable" class="table table-hover table-condensed table-striped">
           <thead>
             <th>Category</th>

@@ -15,7 +15,8 @@ class CreateClientsTable extends Migration {
         Schema::create('clients', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('lookup_user_type')->unsigned();
-            $table->string('full_name');
+            $table->string('lastname');
+            $table->string('firstname');
             $table->string('company_name')->nullable();
             $table->string('password', 64);
             $table->string('email');
@@ -23,9 +24,10 @@ class CreateClientsTable extends Migration {
             $table->string('company_address')->nullable();
             $table->string('contact_no');
             $table->string('birthday')->nullable();
+            $table->text('image')->nullable();
             $table->integer('lookup_security_question')->unsigned();
             $table->string('security_question_answer');
-            $table->boolean('is_validated')->default(0);
+            $table->boolean('is_verified')->default(0);
             $table->boolean('is_active')->default(1);
 
             $table->timestamps();

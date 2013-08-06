@@ -12,6 +12,7 @@ body { padding: 10px 0 0 0;	}
 
 .op-buttons { display: block; margin: 10px 0 0 0; text-align: right;}
 
+.modal { background-color: #EEEEEE; }
 .modal form { margin: 0;}
 .modal .close { background: url('../img/icon-close3.png') no-repeat scroll 0 0 transparent; height: 50px; opacity: .95; position: absolute; right: -14px; top: -17px; width: 50px; z-index: 2; }
 .modal .close:hover { opacity: 1; }
@@ -21,6 +22,8 @@ body { padding: 10px 0 0 0;	}
 
 .modal .modal-body .wrapper.show { overflow: hidden; }
 .modal .modal-body .switch { vertical-align: middle; }
+
+.modal .modal-footer { background-color: inherit; border-top: medium none; box-shadow: none; }
 
 .show .left{ float: left; }
 .show .left.preview{ width: 250px; }
@@ -45,6 +48,30 @@ body { padding: 10px 0 0 0;	}
 
 
 
-.email-panel h3 { margin: 0 }
+.email-panel h3, .accounts h3 { margin: 0 }
 .email-panel .wrapper { background-color: #EEEEEE; padding: 35px; }
 .email-panel .wrapper form { text-align: right; }
+
+.accounts .main-wrapper { padding-top: 35px; }
+
+.clients { width: 565px; }
+.clients .ajax-wrapper { overflow: hidden; }
+.clients figure { margin: 10px 0; }
+.clients figure.pull-left { margin-left: 35px; }
+.clients figure.pull-right { margin-right: 35px; }
+.clients figure a { -webkit-border-radius: 10px; border: 1px solid #EEEEEE; display: block; padding: 30px; }
+.clients figure a:hover { border-color: #CCCCCC; }
+.clients .control-group { margin-bottom: 0; }
+.clients .pull-left.image { padding: 40px 0 0 50px; }
+.clients .pull-left.image .controls{  margin: 0; }
+.clients .fileupload {max-width: 150px; }
+.clients .fileupload-new { line-height: 20px;max-height: 150px;}
+.clients div.fileupload-exists{ line-height: 35px;min-height: 150px;}
+
+
+.login { background: url('../img/login/bg.png') no-repeat scroll center 130px transparent;}
+.login .container { margin: 50px auto 0; width: 450px; }
+.login .container .control-label { width: 120px; }
+.login .container .controls { margin-left: 140px; }
+.login .container .logo{ text-align: center; }
+.login .container form {margin: 10px 0 0; padding: 40px 0 20px; -webkit-box-shadow: 0 0 30px #ccc;-moz-box-shadow: 0 0 30px #ccc;box-shadow: 0 0 30px #ccc;}

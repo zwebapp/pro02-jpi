@@ -5,7 +5,7 @@ class LookuptypesTableSeeder extends Seeder {
     public function run()
     {
     	// Uncomment the below to wipe the table clean before populating
-    	DB::table('lookuptypes')->delete();
+    	DB::table('lookup_types')->delete();
 
       $lookuptypes = array(
 				['id' => 1, 'type' => 'order_status', 'created_at' => new DateTime ],
@@ -15,7 +15,7 @@ class LookuptypesTableSeeder extends Seeder {
       );
 
       // Uncomment the below to run the seeder
-      DB::table('lookuptypes')->insert($lookuptypes);
+      DB::table('lookup_types')->insert($lookuptypes);
     }
 
 }
