@@ -6,6 +6,6 @@ class Setting extends Eloquent {
 		
 		public static $rules  = array();
 
-		protected $fillable   = [ 'recipients'];
+		protected $fillable   = array( 'recipients');
 
 }

@@ -60,21 +60,3 @@
 </div>
 
 @stop
-
-@section('extraJs')
-
-<script>
-  // jQuery('document').ready(function($){
-  //   $('#dataTable').find('.edit').click(function(e){
-  //     $.get($(this).attr('href'), function(data) {
-
-  //       $('input[name="isEdit"]').val(data.id);
-  //       $('input[name="name"]').val(data.name);
-  //       $('textarea[name="description"]').val(data.description);
-
-  //     });
-  //   });
-  // });
-</script>
-
-@stop

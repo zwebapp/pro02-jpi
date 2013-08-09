@@ -1,5 +1,5 @@
 <div class="wrapper show">
-  <h1> {{ $product->name }} {{ Form::checkbox('is_active', $product->id, $product->is_active , ['class' => 'for-switch', 'data-stateUrl' => 'products/state']) }} </h1>
+  <h1> {{ $product->name }} {{ Form::checkbox('is_active', $product->id, $product->is_active , array('class' => 'for-switch', 'data-stateUrl' => 'products/state')) }} </h1>
   <div class="left preview" style="float:left;">
     {{ HTML::image( isset($product->image) ? json_decode($product->image)->modal : 'public/img/no-image-product.jpg', $product->name)}}
   </div>

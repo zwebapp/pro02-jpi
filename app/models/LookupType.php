@@ -8,7 +8,7 @@ class LookupType extends Eloquent {
 
 		public function lookups()
 		{
-			return $this->hasMany('lookup');
+			return $this->hasMany('Lookup');
 		}
 
 }

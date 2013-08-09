@@ -42,14 +42,14 @@
   <div class="control-group">
     <label class="control-label" for="is_active">Activate: </label>
     <div class="controls">
-      {{ Form::checkbox('is_active', true ,isset( $user->is_active ) ? $user->is_active : true , ['class' => 'for-switch']) }}
+      {{ Form::checkbox('is_active', true ,isset( $user->is_active ) ? $user->is_active : true , array('class' => 'for-switch')) }}
     </div>
   </div>
 
 </div>
 
 <div class="modal-footer">
-  {{ HTML::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
+  {{ HTML::image('public/img/preload.gif', '', array('class' => 'hidden', 'id' => 'preload')) }}
   @if (isset($id))
     {{ Form::hidden('id', $id) }}
   @endif

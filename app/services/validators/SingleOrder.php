@@ -4,11 +4,11 @@
 /**
 * 	
 */
-class Category extends Validator {
+class SingleOrder extends Validator {
 	
 	public static $rules = array(
 
-		'name' => 'required',
+		'quantity' => 'integer|required'
 
 	);
 

@@ -32,9 +32,9 @@
           @foreach ($products as $product)
             <tr class="item_{{ $product->id }} {{ !$product->is_active ? 'unpublished' : '' }} ">
               <td class="thumbs">
-                {{ HTML::image(isset($product->image) ?  json_decode($product->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', ['class' => 'thumbnail']) }}
+                {{ HTML::image(isset($product->image) ?  json_decode($product->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', array('class' => 'thumbnail')) }}
               </td>
-              <td class="name">{{ link_to('admin/products/' . $product->id  .'/show/', $product->name, [ 'data-toggle' => 'modal']) }} </td>
+              <td class="name">{{ link_to('admin/products/' . $product->id  .'/show/', $product->name, array( 'data-toggle' => 'modal')) }} </td>
               <td class="description">{{ $product->description }}</td>
               <td class="category">  {{  isset($product->category->name) ? $product->category->name : 'Uncategorized'  }}</td>
               <td class="nolink">

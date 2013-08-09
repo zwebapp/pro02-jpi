@@ -12,7 +12,7 @@
     {{ Form::hidden('is_client', true)}}
     <div class="control-group {{ ($errors->has('username') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('username', '', ['class' => 'input-xlarge', 'placeholder' => 'Username'] ) }}
+        {{ Form::text('username', '', array('class' => 'input-xlarge', 'placeholder' => 'Username') ) }}
         <span class="help-block">{{ $errors->first('username') }}</span>
       </div>
     </div>
@@ -32,37 +32,37 @@
     <h6>Personal Information <small class="text-error">All fields are required.</small></h6>
     <div class="control-group {{ ($errors->has('lastname') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('lastname', '', ['class' => 'input-xlarge', 'placeholder' => 'Lastname'] ) }}
+        {{ Form::text('lastname', '', array('class' => 'input-xlarge', 'placeholder' => 'Lastname') ) }}
         <span class="help-block">{{ $errors->first('lastname') }}</span>
       </div>
     </div>
     <div class="control-group {{ ($errors->has('firstname') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('firstname', '', ['class' => 'input-xlarge', 'placeholder' => 'Firstname'] ) }}
+        {{ Form::text('firstname', '', array('class' => 'input-xlarge', 'placeholder' => 'Firstname') ) }}
         <span class="help-block">{{ $errors->first('firstname') }}</span>
       </div>
     </div>
     <div class="control-group {{ ($errors->has('email') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('email', '', ['class' => 'input-xlarge', 'placeholder' => 'Email Address'] ) }}
+        {{ Form::text('email', '', array('class' => 'input-xlarge', 'placeholder' => 'Email Address') ) }}
         <span class="help-block">{{ $errors->first('email') }}</span>
       </div>
     </div>
     <div class="control-group {{ ($errors->has('birthday') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('birthday', '', ['class' => 'input-xlarge', 'data-mask' => '99-99-9999', 'placeholder' => 'Data of Birth: MM-DD-YYYY'] ) }}
+        {{ Form::text('birthday', '', array('class' => 'input-xlarge', 'data-mask' => '99-99-9999', 'placeholder' => 'Data of Birth: MM-DD-YYYY') ) }}
         <span class="help-block">{{ $errors->first('birthday') }}</span>
       </div>
     </div>
     <div class="control-group {{ ($errors->has('address') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::textarea('address', '', ['class' => 'input-xlarge', 'placeholder' => 'Mailing address', 'rows' => '2'] ) }}
+        {{ Form::textarea('address', '', array('class' => 'input-xlarge', 'placeholder' => 'Mailing address', 'rows' => '2') ) }}
         <span class="help-block">{{ $errors->first('address') }}</span>
       </div>
     </div>
     <div class="control-group {{ ($errors->has('contact_no') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('contact_no', '', ['class' => 'input-xlarge', 'placeholder' => 'Contact numbers'] ) }}
+        {{ Form::text('contact_no', '', array('class' => 'input-xlarge', 'placeholder' => 'Contact numbers') ) }}
         <span class="help-block">{{ $errors->first('contact_no') }}</span>
       </div>
     </div>
@@ -71,13 +71,13 @@
 
     <div class="control-group">
       <div class="control">
-        {{ Form::select('lookup_security_question', Lookup::securityQuestions()->lists('value', 'id'), 0, ['class' => 'input-xlarge']) }}
+        {{ Form::select('lookup_security_question', Lookup::securityQuestions()->lists('value', 'id'), 0, array('class' => 'input-xlarge')) }}
         <span class="help-block"></span>
       </div>
     </div>
     <div class="control-group {{ ($errors->has('security_question_answer') ? 'error' : '' ) }}">
       <div class="control">
-        {{ Form::text('security_question_answer', '', ['class' => 'input-xlarge', 'placeholder' => 'Security answer'] ) }}
+        {{ Form::text('security_question_answer', '', array('class' => 'input-xlarge', 'placeholder' => 'Security answer') ) }}
         <span class="help-block">{{ $errors->first('security_question_answer') }}</span>
       </div>
     </div>
@@ -86,7 +86,7 @@
 
     <div class="control-group">
       <div class="control">
-        {{ Form::checkbox('is_verified', '', '', ['class' => 'for-switch']) }}
+        {{ Form::checkbox('is_verified', '', '', array('class' => 'for-switch')) }}
       </div>
     </div>
 
@@ -109,7 +109,7 @@
           <span class="btn btn-file">
             <span class="fileupload-new">Select image</span>
             <span class="fileupload-exists">Change</span>
-            {{ Form::file('image', ['id' => 'image']) }}
+            {{ Form::file('image', array('id' => 'image')) }}
           </span>
           <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
           <span class="help-block">{{ $errors->first('image') }}</span>
@@ -123,7 +123,7 @@
 </div>
 
 <div class="modal-footer">
-  {{ HTML::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
+  {{ HTML::image('public/img/preload.gif', '', array('class' => 'hidden', 'id' => 'preload')) }}
   @if (isset($id))
     {{ Form::hidden('id', $id) }}
   @endif

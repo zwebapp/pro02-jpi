@@ -9,7 +9,7 @@ class Lookup extends Eloquent {
 
 		public function type()
 		{
-			return $this->belongsTo('lookupType');
+			return $this->belongsTo('LookupType');
 		}
 
 		public static function orderStatuses()

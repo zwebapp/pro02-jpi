@@ -6,7 +6,7 @@ class Product extends Eloquent {
 		
 		public static $rules  = array();
 
-		protected $fillable   = [ 'name', 'description', 'category_id' ];
+		protected $fillable   = array( 'name', 'description', 'category_id'  );
 		
 		// Allowing soft delete
 		protected $softDelete = true;

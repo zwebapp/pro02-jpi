@@ -7,7 +7,7 @@ class Agents extends BaseController {
 	public function index() {
 	
 		// Show the categories page
-		return View::make('admin.agents.main', ['agents' => Agent::paginate(10)]);
+		return View::make('admin.agents.main', array('agents' => Agent::paginate(10)));
 
 	}
 
@@ -24,7 +24,7 @@ class Agents extends BaseController {
 	public function edit($id)	{
 		
 		$agent = Agent::find($id);
-		return View::make('admin.agents._form', array_merge($agent->toArray(), ["edit" => true] ));
+		return View::make('admin.agents._form', array_merge($agent->toArray(), array("edit" => true) ));
 
 	}
 
@@ -34,15 +34,15 @@ class Agents extends BaseController {
 	public function save() {
 		
 	
-		$formData = [
+		$formData = array (
 			'full_name' => Input::get('full_name'),
 			'email_address' => Input::get('email_address'),
 			'address' => Input::get('address'),
 			'birthday' => Input::get('birthday'),
 			'contact_no' => Input::get('contact_no'),
-		];
+		);
 
-		$agent = [ 'information' => json_encode($formData) ];
+		$agent = array( 'information' => json_encode($formData) );
 
 		Agent::create($agent);
 
@@ -63,13 +63,13 @@ class Agents extends BaseController {
 		// 	return Redirect::action('Categories@edit', ['id' => Input::get('id')])->withInput()->withErrors($validation->errors);
 		// }
 
-		$formData = [
+		$formData = array(
 			'full_name'     => Input::get('full_name'),
 			'email_address' => Input::get('email_address'),
 			'address'       => Input::get('address'),
 			'birthday'      => Input::get('birthday'),
 			'contact_no'    => Input::get('contact_no'),
-		];
+		);
 
 		$agent    = Agent::find(Input::get('id'));
 
@@ -80,7 +80,7 @@ class Agents extends BaseController {
 		
 		Notification::success('<strong>Dang!</strong> Agent updated!');
 
-		return Redirect::action('Agents@edit', ['id' => Input::get('id')])->withInput();
+		return Redirect::action('Agents@edit', array('id' => Input::get('id')))->withInput();
 
 	}
 

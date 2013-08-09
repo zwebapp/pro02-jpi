@@ -24,7 +24,7 @@ class Categories extends BaseController {
 	public function edit($id)	{
 		
 		$category = Category::find($id);
-		return View::make('admin.categories._form', array_merge($category->toArray(), ["edit" => true] ));
+		return View::make('admin.categories._form', array_merge($category->toArray(), array("edit" => true) ));
 
 	}
 
@@ -56,7 +56,7 @@ class Categories extends BaseController {
 		$validation = new Services\Validators\Category;
 
 		if ($validation->fails()) {
-			return Redirect::action('Categories@edit', ['id' => Input::get('id')])->withInput()->withErrors($validation->errors);
+			return Redirect::action('Categories@edit', array('id' => Input::get('id')))->withInput()->withErrors($validation->errors);
 		}
 
 		$category              = Category::find(Input::get('id'));
@@ -69,7 +69,7 @@ class Categories extends BaseController {
 		
 		Notification::success('<strong>Dang!</strong> Product updated!');
 
-		return Redirect::action('Categories@edit', ['id' => Input::get('id')])->withInput();
+		return Redirect::action('Categories@edit', array('id' => Input::get('id')))->withInput();
 
 	}
 

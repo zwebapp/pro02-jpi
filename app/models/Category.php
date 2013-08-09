@@ -5,7 +5,7 @@ class Category extends Eloquent {
 
 	// Instance declarations
 	// 		
-    protected $fillable   = [ 'name', 'description' ];
+    protected $fillable   = array( 'name', 'description' );
     
     protected $guarded    = array();
     
@@ -20,13 +20,13 @@ class Category extends Eloquent {
     // 
     public function products() {
     	
-    	return $this->hasMany('product');
+    	return $this->hasMany('Product');
 
     }
 
     public function delete()
     {
-        Product::where("category_id", $this->id)->update(['category_id' => NULL]);
+        Product::where("category_id", $this->id)->update(array('category_id' => NULL));
         return parent::delete();
     }
 

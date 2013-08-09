@@ -6,7 +6,7 @@ class Clients extends BaseController {
 
 	public function index(){
 	
-		return View::make('admin.clients.main', [ 'users' => User::where('is_client', TRUE)->paginate(10)]);
+		return View::make('admin.clients.main', array( 'users' => User::where('is_client', TRUE)->paginate(10)));
 
 	}
 
@@ -62,7 +62,7 @@ class Clients extends BaseController {
 
 		Session::put('edit', true);
 
-		return View::make( 6 == $user->client->lookup_user_type ? 'admin.clients._form-personal' : 'admin.clients._form-business', ['user' => $user] );
+		return View::make( 6 == $user->client->lookup_user_type ? 'admin.clients._form-personal' : 'admin.clients._form-business', array('user' => $user) );
 
 	}
 

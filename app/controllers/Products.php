@@ -6,13 +6,13 @@ class Products extends BaseController {
 
 	// Show the products page
 	public function index() {
-		return View::make('admin.products.main', ['products' => Product::orderBy('name')->paginate(10)]);
+		return View::make('admin.products.main', array('products' => Product::orderBy('name')->paginate(10)));
 	}
 
 
 	public function show($id){
 		$product = Product::find($id);
-		return View::make('admin.products.show', ['product' => $product]);
+		return View::make('admin.products.show', array('product' => $product));
 	}
 
 
@@ -26,7 +26,7 @@ class Products extends BaseController {
 
 	public function edit($id)	{
 		$product = Product::find($id);
-		return View::make('admin.products._form', array_merge($product->toArray(), ["edit" => true] ));
+		return View::make('admin.products._form', array_merge($product->toArray(), array("edit" => true) ));
 	}
 
 
@@ -81,7 +81,7 @@ class Products extends BaseController {
 		$validation = new Services\Validators\Product;
 
 		if ($validation->fails()) {
-			return Redirect::action('Products@edit', ['id' => Input::get('id')])->withInput()->withErrors($validation->errors);
+			return Redirect::action('Products@edit', array('id' => Input::get('id')))->withInput()->withErrors($validation->errors);
 		}
 
 		$inputs = Input::all();
@@ -110,12 +110,29 @@ class Products extends BaseController {
 		
 		if (Request::ajax()) {
 		}
-		return Redirect::action('Products@edit', ['id' => Input::get('id')])->withInput();
+		return Redirect::action('Products@edit', array('id' => Input::get('id')))->withInput();
 		
 		// return Redirect::action('Products@index');
 
 	}
 
 
+	public function clientIndex()
+	{
+			return View::make('client.products.main', array('products' => Product::where('is_active', TRUE)->orderBy('name')->paginate(15)));
+	}
 
+	public function clientShowCategory($id)
+	{
+		if (is_null($id)) {
+			return Redirect::action('Product@clientIndex');
+		}
+
+		return View::make('client.products.main', array('products' => Product::where('category_id', $id)->orderBy('name')->paginate(15), 'category' => Category::find($id) ));
+	}
+
+	public function clientShowProduct($id)
+	{
+		return View::make('client.products.single', array('product' => Product::find($id) ));
+	}
 }

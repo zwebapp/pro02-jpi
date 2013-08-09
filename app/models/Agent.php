@@ -5,7 +5,7 @@ class Agent extends Eloquent {
 
     public static $rules = array();
 
-    protected $fillable   = [ 'information', 'is_active' ];
+    protected $fillable   = array( 'information', 'is_active' );
 
     protected $softDelete = true;
 }

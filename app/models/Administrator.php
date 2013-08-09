@@ -1,11 +1,12 @@
 <?php
 
 class Administrator extends Eloquent {
+	
     protected $guarded = array();
 
     public static $rules = array();
 
-    protected $fillable = [ 'name', 'user_id' ];
+    protected $fillable = array( 'name', 'user_id' );
 
     public function user()
     {

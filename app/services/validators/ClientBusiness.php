@@ -6,7 +6,7 @@
 */
 class ClientBusiness extends Validator {
 	
-	public static $rules = [
+	public static $rules = array(
 
 		'username'                 => 'alpha_num|unique:users|required|min:6',
 		'password'                 => 'required|confirmed|min:6',
@@ -18,7 +18,7 @@ class ClientBusiness extends Validator {
 		'contact_no'               => 'required',
 		'security_question_answer' => 'required'
 
-	];
+	);
 
 }
 

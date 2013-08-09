@@ -11,19 +11,17 @@
 |
 */
 
-Route::filter('auth', function() {
+Route::filter('adminAuth', function() {
  if (Auth::guest()) return Redirect::to('admin/login');
 });
-
 
 Route::get('admin/login', function() {
  return View::make('layouts.back.login');
 });
 
-
 Route::post('admin/login', function(){
 	 // get POST data
-	$userdata = ['username' => Input::get('username'),'password' => Input::get('password'), 'is_client' => false, 'is_active' => true];
+	$userdata = array('username' => Input::get('username'),'password' => Input::get('password'), 'is_client' => false, 'is_active' => true);
 
  	if ( Auth::attempt($userdata) ) {
  		$user = User::find(Auth::user()->id);
@@ -36,9 +34,11 @@ Route::post('admin/login', function(){
  	return Redirect::to('admin/login')->with('login_errors', true);
 });
 
+
+
 // Administrator Pages
 
-Route::group(array('before' => 'auth'), function () {
+Route::group(array('before' => 'adminAuth'), function () {
 
 // Categories Pages
 // -------------------------------------------------------------
@@ -88,7 +88,10 @@ Route::group(array('before' => 'auth'), function () {
 
 // Clients Pages
 // -------------------------------------------------------------
-	Route::model('client', 'Client');
+	Route::model('user', 'User');
+	Route::get('admin/clients/{user}/remove', function(User $user){
+		$user->delete();
+	});
 	Route::get('admin/clients/{id}/edit','Clients@edit' );
 	Route::get('admin/clients/addPersonal', 'Clients@addPersonal');
 	Route::get('admin/clients/addBusiness', 'Clients@addBusiness');
@@ -128,11 +131,37 @@ Route::group(array('before' => 'auth'), function () {
 // end Administrator Group -------------------------------------
 
 
+Route::filter('clientAuth', function() {
+ if (Auth::guest()) return Redirect::back();
+});
 
+
+Route::post('client/login', function(){
+	 // get POST data
+	$userdata = array('username' => Input::get('username'),'password' => Input::get('password'), 'is_client' => true, 'is_active' => true);
+
+ 	if ( Auth::attempt($userdata) ) {
+ 		$user = User::find(Auth::user()->id);
+ 		$user->last_logged_in =  new DateTime;
+ 		$user->save();
+
+		return Redirect::back();
+ 	}
+
+ 	return Redirect::back()->with('login_errors', true);
+});
 
 // Client - Dashboard
 // -------------------------------------------------------------
 Route::get('/', function() {
-	return View::make('hello');
+	return View::make('client.index');
 });
 
+Route::model('category', 'Category');
+
+Route::get('products', 'Products@clientIndex');
+
+Route::get('products/category/{id}', 'Products@clientShowCategory');
+Route::get('products/{id}', 'Products@clientShowProduct');
+
+Route::post('orders/additemtobasket', 'Orders@addItemToBasket');

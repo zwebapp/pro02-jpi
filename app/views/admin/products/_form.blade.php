@@ -1,4 +1,4 @@
-{{ Form::open( ['action' => isset($edit) ? 'Products@update' : 'Products@save', 'files' => true, 'class' => 'with-upload form-horizontal', 'id' => 'productsForm']) }}
+{{ Form::open( array('action' => isset($edit) ? 'Products@update' : 'Products@save', 'files' => true, 'class' => 'with-upload form-horizontal', 'id' => 'productsForm')) }}
 
 <div class="wrapper">
   <h4> {{ isset($edit) ? "Edit " : "Add new " }} product </h4>
@@ -31,7 +31,7 @@
         <div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;">
           {{ HTML::image(isset($image) ?  json_decode($image)->thumb : 'public/img/thumb-no-image-product.jpg' , '') }}
         </div>
-        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>{{ Form::file('image', ['id' => 'image']) }}</span>
+        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>{{ Form::file('image', array('id' => 'image')) }}</span>
         <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
         <span class="help-inline">{{ $errors->first('image') }}</span>
       </div>
@@ -42,13 +42,13 @@
   <div class="control-group">
     <label class="control-label" for="name">Assign to Category:</label>
     <div class="controls">
-      {{ Form::select('category_id', ['0' => 'Uncategorized'] + Category::lists('name', 'id'), isset($category_id) ? $category_id : '0') }}
+      {{ Form::select('category_id', array('0' => 'Uncategorized') + Category::lists('name', 'id'), isset($category_id) ? $category_id : '0') }}
     </div>
   </div>
 </div>
 
 <div class="modal-footer">
-  {{ Html::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
+  {{ Html::image('public/img/preload.gif', '', array('class' => 'hidden', 'id' => 'preload')) }}
 
   {{ isset($id) ? Form::hidden('id', $id) : '' }}
 

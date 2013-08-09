@@ -10,7 +10,7 @@
   <div class="control-group">
     <label class="control-label" for="is_active">Active: </label>
     <div class="controls">
-      {{ Form::checkbox('is_active', '', $is_active , ['class' => 'for-switch']) }}
+      {{ Form::checkbox('is_active', '', $is_active , array('class' => 'for-switch') ) }}
     </div>
   </div>
   @endif
@@ -48,7 +48,7 @@
 </div>
 
 <div class="modal-footer">
-  {{ HTML::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
+  {{ HTML::image('public/img/preload.gif', '', array('class' => 'hidden', 'id' => 'preload')) }}
   @if (isset($id))
     {{ Form::hidden('id', $id) }}
   @endif

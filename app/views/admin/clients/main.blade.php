@@ -35,7 +35,7 @@
             <tr class="item_{{ $user->id }} {{ !$user->is_active ? 'unpublished' : '' }}">
               <td class="type"> {{ $user->client->userType->value }}</td>
               <td class="thumbs">
-                {{ HTML::image(isset($user->client->image) ?  json_decode($user->client->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', ['class' => 'thumbnail']) }}
+                {{ HTML::image(isset($user->client->image) ?  json_decode($user->client->image)->mini : 'public/img/thumb-no-image-product.jpg' , '', array('class' => 'thumbnail')) }}
               </td>
               <td class="name">{{ isset($user->client->company_name) ? $user->client->company_name : $user->client->firstname . ' ' . $user->client->lastname }}</td>
               <td class="address">{{ isset($user->client->company_address) ? $user->client->company_address : $user->client->address }}</td>
@@ -71,7 +71,7 @@
         <a href="{{ url('admin/clients/addBusiness') }}" class="client-selector" data-toggle="modal">{{ HTML::image('public/img/client-business.png')  }}</a>
         <figcaption>Company</figcaption>
       </figure>
-      {{ HTML::image('public/img/preload.gif', '', ['class' => 'hidden', 'id' => 'preload']) }}
+      {{ HTML::image('public/img/preload.gif', '', array('class' => 'hidden', 'id' => 'preload')) }}
     </div>
   </div>
 

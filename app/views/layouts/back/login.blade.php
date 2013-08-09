@@ -32,25 +32,25 @@ Administrator Page | JPI @show</title>
         {{ HTML::image('public/img/login/logo.png', '') }}
       </div>
 
-      {{ Form::open(['class' => 'form-horizontal']) }}
+      {{ Form::open(array('class' => 'form-horizontal')) }}
          <!-- check for login errors flash var -->
 
         <div class="control-group">
-          {{ Form::label('username', 'Username', [ 'class' => 'control-label']) }}
+          {{ Form::label('username', 'Username', array( 'class' => 'control-label')) }}
           <div class="controls">
-            {{ Form::text('username', '', ['class' => '', 'placeholder' => 'Username']) }}
+            {{ Form::text('username', '', array('class' => '', 'placeholder' => 'Username')) }}
           </div>
         </div>
         <div class="control-group">
-          {{ Form::label('password', 'Password', [ 'class' => 'control-label']) }}
+          {{ Form::label('password', 'Password', array( 'class' => 'control-label')) }}
           <div class="controls">
-            {{ Form::password('password', ['class' => '', 'placeholder' => 'Password']) }}
+            {{ Form::password('password', array('class' => '', 'placeholder' => 'Password')) }}
           </div>
         </div>
 
         <div class="control-group">
           <div class="controls">
-            {{ Form::submit('Sign in', ['class' => 'btn']) }}
+            {{ Form::submit('Sign in', array('class' => 'btn')) }}
           </div>
         </div>
       {{ Form::close() }}

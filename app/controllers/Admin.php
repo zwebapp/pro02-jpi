@@ -53,7 +53,7 @@ class Admin extends BaseController {
 	{
 		$admin = User::find($id)->administrator;
 
-		return View::make('admin.manage._form', array_merge($admin->toArray(), ["edit" => true] ));
+		return View::make('admin.manage._form', array_merge($admin->toArray(), array("edit" => true) ));
 	}
 
 	public function save()
@@ -68,7 +68,7 @@ class Admin extends BaseController {
 		$inputs = Input::all();
 		$inputs['password'] = Hash::make($inputs['password']);
 
-		$admin = new Administrator(['name' => $inputs['name'] ]);
+		$admin = new Administrator(array('name' => $inputs['name'] ));
 
 		$user = User::create($inputs);
 
@@ -82,10 +82,10 @@ class Admin extends BaseController {
 
 	public function update()
 	{
-		$validation = new Services\Validators\AdminAccount([Input::get('name'), Input::get('username'), Input::get('is_active')]);
+		$validation = new Services\Validators\AdminAccount(array(Input::get('name'), Input::get('username'), Input::get('is_active')));
 
 		if ($validation->fails()) {
-			return Redirect::action('Admin@edit', ['id' => Input::get('id')])->withInput()->withErrors($validation->errors);
+			return Redirect::action('Admin@edit', array('id' => Input::get('id')))->withInput()->withErrors($validation->errors);
 		}
 
 		$inputs = Input::all();
@@ -101,7 +101,7 @@ class Admin extends BaseController {
 		
 		Notification::success('<strong>Dang!</strong> Administrator account updated!');
 
-		return Redirect::action('Admin@edit', ['id' => Input::get('id')]);
+		return Redirect::action('Admin@edit', array('id' => Input::get('id')));
 
 	}
 

@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	protected	$fillable = ['username', 'password', 'is_active', 'is_client'];
+	protected	$fillable = array('username', 'password', 'is_active', 'is_client');
 
 	protected $softDelete = true;
 
@@ -57,12 +57,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function administrator()
 	{
-		return $this->hasOne('administrator');
+		return $this->hasOne('Administrator');
 	}
 
 	public function client()
 	{
-		return $this->hasOne('client');
+		return $this->hasOne('Client');
 	}
 
 }
