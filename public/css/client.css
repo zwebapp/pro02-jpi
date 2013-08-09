@@ -45,4 +45,15 @@ nav li a{ color: #7997C5;font-size: 12px; }
 .flexslider .slides li figure { margin: 0}
 
 .category-info { color: #444444; }
+
+.cart-status { background-color: #42a7c6;color: #FFFFFF; font-style: italic; left: 0; position: fixed;top: 100px;}
+.cart-status .handler {cursor: pointer; padding: 15px; text-align: right; }
+.cart-status .items { padding: 15px 40px 20px 20px; }
+.cart-status .big {font-size: 50px;}
+.cart-status .item {margin: 0 0 10px 0;overflow: hidden;}
+.cart-status .item .qty { padding: 30px 0 0 0;}
+
+.submitform { text-align: right; }
+.submitform .change-address{ color: #08c }
+
 /* end Products */

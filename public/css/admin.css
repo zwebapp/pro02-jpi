@@ -75,3 +75,11 @@ body { padding: 10px 0 0 0;	}
 .login .container .controls { margin-left: 140px; }
 .login .container .logo{ text-align: center; }
 .login .container form {margin: 10px 0 0; padding: 40px 0 20px; -webkit-box-shadow: 0 0 30px #ccc;-moz-box-shadow: 0 0 30px #ccc;box-shadow: 0 0 30px #ccc;}
+
+
+
+.admin-orders { background: #FFFFFF; }
+.admin-orders table { background-color: #FFFFFF; font-size: 12px; }
+.admin-orders .show img { width: auto; }
+.admin-orders .qty { text-align: right; }
+.pending>td { background-color: #fcf8e3!important; font-weight: bold; }

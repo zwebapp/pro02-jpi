@@ -100,6 +100,17 @@ Route::group(array('before' => 'adminAuth'), function () {
 	Route::get('admin/clients', 'Clients@index');
 
 // end Agents Pages -------------------------------------------
+// 
+
+// Orders Pages
+// -------------------------------------------------------------
+	
+	Route::get('admin/orders/sort/{sort}', 'Orders@showSort');
+	Route::get('admin/orders/{id}/show','Orders@show' );
+	Route::get('admin/orders/update', 'Orders@update');
+	Route::get('admin/orders', 'Orders@index');
+
+// end Agents Pages -------------------------------------------
 
 
 
@@ -123,6 +134,7 @@ Route::group(array('before' => 'adminAuth'), function () {
 	
 	Route::get('/logout', function() {
 		Auth::logout();
+		Session::flush();
 		return Redirect::to('/');
 	});
 
@@ -165,3 +177,6 @@ Route::get('products/category/{id}', 'Products@clientShowCategory');
 Route::get('products/{id}', 'Products@clientShowProduct');
 
 Route::post('orders/additemtobasket', 'Orders@addItemToBasket');
+Route::get('order/checkout', 'Orders@proceedCheckout');
+Route::get('order/remove{id}', 'Orders@removeItem');
+Route::post('order/submit', 'Orders@submit');

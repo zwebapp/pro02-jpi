@@ -9,7 +9,6 @@ Administrator Page | JPI @show</title>
     {{ HTML::style('public/css/bootstrap.min.css') }}
     {{ HTML::style('public/css/bootstrap-responsive.min.css') }}
     {{ HTML::style('public/css/bootstrap-switch.css') }}
-    {{ HTML::style('public/css/bootstrap-datetimepicker.min.css') }}
     
     {{ HTML::style('public/css/admin.css') }}
     
@@ -54,7 +53,6 @@ Administrator Page | JPI @show</title>
     {{ HTML::script('public/js/eldarion-ajax.min.js') }}
     {{ HTML::script('public/js/bootstrap-switch.min.js') }}
     {{ HTML::script('public/js/ajaxfileupload.js') }}
-    {{ HTML::script('public/js/bootstrap-datetimepicker.min.js') }}
     {{ HTML::script('public/js/admin.js') }}
 
     @section('extraJs')
