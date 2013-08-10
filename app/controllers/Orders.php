@@ -6,7 +6,7 @@ class Orders extends BaseController {
 
 	public function index()
 	{
-		return View::make('admin.orders.main', array('orders' => Order::orderBy('created_at')->paginate(15)) );
+		return View::make('admin.orders.main', array('orders' => Order::orderBy('created_at', 'desc')->paginate(15)) );
 	}
 
 
@@ -18,7 +18,7 @@ class Orders extends BaseController {
 
 	public function showSort($sort)
 	{
-		return View::make('admin.orders.main', array('orders' =>  Order::where('lookup_status', $sort)->orderBy('created_at')->paginate(15)));
+		return View::make('admin.orders.main', array('orders' =>  Order::where('lookup_status', $sort)->orderBy('created_at', 'desc')->paginate(15)));
 	}
 
 
@@ -104,9 +104,15 @@ class Orders extends BaseController {
 		$inputs['client_id'] = Auth::user()->client->id;
 		$inputs['lookup_status'] = 1;
 
-		Order::create($inputs);
+		$order = Order::create($inputs);
 
 		Session::forget('orders');
+
+		Mail::send('emails.order', $order, function($message)
+		{
+				$recipient = Setting::find(1);
+		    $message->to($recipient->recipients, 'System Administrator')->subject('Welcome!');
+		});
 
 		return View::make('client.orders.thankyou');
 	}

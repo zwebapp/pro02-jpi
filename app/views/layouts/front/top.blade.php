@@ -6,7 +6,7 @@
 	</div>
 	<div class="pull-right">
 		<div class="auth">
-			@if(Auth::guest())
+			@if(Auth::guest() || Auth::user()->is_client == FALSE)
 			{{ Form::open(array('url' => 'client/login', 'method' => 'POST', 'class' => 'form-inline'))}}
 				
 				{{ Form::text('username', '', array('class' => 'input-small', 'placeholder' => 'Username'))}}

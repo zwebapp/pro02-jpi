@@ -15,4 +15,24 @@ jQuery('document').ready(function($) {
 		$('#deliveryAddress').text($('#textAddress').val());
 		$('#addressInfo').show();
 	})
+
+	$(".jcarousel").jCarouselLite({
+      btnNext: ".next",
+      btnPrev: ".prev"
+  });
+});
+
+ $(window).load(function() {
+    $('.banner').flexslider({
+    	'directionNav' : false,
+    	'animation' : 'slide'
+    });
+
+	  $('.single').flexslider({
+	    animation: "slide",
+	    animationLoop: false,
+	    itemWidth: 80,
+	    itemMargin: 20,
+	    directionNav: false
+	  });
 });

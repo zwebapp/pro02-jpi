@@ -46,13 +46,21 @@
 
 @section('content')
 	
-	<div class="row-fluid">
-		<div class="span10 offset1 ">
-			<h4>Other {{ $product->category->name }} products </h4>
-			<div class="flexslider">
+	<div class="slide-wrapper">
+		
+		<h4>Other {{ $product->category->name }} products </h4>
 
-			  <ul class="slides">
+		<div class="row-fluid carousel">
 
+			<div class="span1">
+				<input class="prev" type="image" src="{{ url('public/img/ca-left.png') }}" />
+			</div>
+
+			<div class="span10">
+
+				<div class="jcarousel">
+				  <ul>
+				  
 			  	@foreach(Category::find($product->category->id)->products as $product)
 						
 						@if(!$product->is_active) 
@@ -72,29 +80,18 @@
 
 			  	@endforeach
 
-			  </ul>
+				  </ul>
 
+				</div>
+
+			</div>
+
+			<div class="span1">
+				<input class="next" type="image" src="{{ url('public/img/ca-right.png') }}" />
 			</div>
 
 		</div>
 	</div>
 
 	
-@stop
-
-
-@section('extraJs')
-
-	<!-- Place in the <head>, after the three links -->
-<script type="text/javascript" charset="utf-8">
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    animationLoop: false,
-    itemWidth: 80,
-    itemMargin: 20,
-    directionNav: false
-  });
-});</script>
-
 @stop

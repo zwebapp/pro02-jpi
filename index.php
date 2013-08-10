@@ -6,6 +6,8 @@
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
 
+ini_set('date.timezone', 'Asia/Bangkok');
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

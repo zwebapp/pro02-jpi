@@ -22,7 +22,6 @@ JJED | JPI @show</title>
     </header>
 
     @section('banner')
-
     @show
 
     <div class="container-semifluid">
@@ -38,7 +37,7 @@ JJED | JPI @show</title>
     </div>
 
 
-    @if(! Auth::guest() )
+    @if(! Auth::guest() && Auth::user()->is_client == TRUE )
       @include('_partials.cart');
     @endif
 
@@ -53,6 +52,7 @@ JJED | JPI @show</title>
     {{ HTML::script('public/js/eldarion-ajax.min.js') }}
     {{ HTML::script('public/js/bootstrap-switch.min.js') }}
     {{ HTML::script('public/js/jquery.flexslider-min.js') }}
+    {{ HTML::script('public/js/jcarousel.min.js') }}
     {{ HTML::script('public/js/ajaxfileupload.js') }}
     {{ HTML::script('public/js/main.js') }}
 

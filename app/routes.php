@@ -12,7 +12,7 @@
 */
 
 Route::filter('adminAuth', function() {
- if (Auth::guest()) return Redirect::to('admin/login');
+ if (Auth::guest() || Auth::user()->is_client == TRUE) return Redirect::to('admin/login');
 });
 
 Route::get('admin/login', function() {

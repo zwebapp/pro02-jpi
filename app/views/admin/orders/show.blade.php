@@ -15,7 +15,8 @@
       <th>Quantity</th>
     </thead>
     <tbody>
-      @foreach(json_decode($products, true)['orders'] as $key => $quantity)
+      <?php $orderedProducts = json_decode($products, true); ?>
+      @foreach($orderedProducts['orders'] as $key => $quantity)
       <?php $product = Product::find($key) ?>
         <tr>
           <td> {{ HTML::image(isset($product->image) ? json_decode($product->image)->mini : 'public/img/thumb-no-image-product.jpg', '', array('class' => 'img-polaroid')) }} </td>
