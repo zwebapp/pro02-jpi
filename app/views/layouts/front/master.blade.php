@@ -7,6 +7,7 @@ JJED | JPI @show</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{ HTML::style('public/css/bootstrap.min.css') }}
+    {{ HTML::style('public/css/bootstrap-datetimepicker.min.css') }}
     {{ HTML::style('public/css/flexslider.css') }}
     {{ HTML::style('public/css/client.css') }}
     
@@ -49,11 +50,11 @@ JJED | JPI @show</title>
 
     <!-- Scripts are placed here -->
     {{ HTML::script('public/js/jquery-2.0.3.min.js') }}
-    {{ HTML::script('public/js/eldarion-ajax.min.js') }}
+    {{ HTML::script('public/js/bootstrap.min.js') }}
+    {{ HTML::script('public/js/bootstrap-datetimepicker.min.js') }}
     {{ HTML::script('public/js/bootstrap-switch.min.js') }}
     {{ HTML::script('public/js/jquery.flexslider-min.js') }}
     {{ HTML::script('public/js/jcarousel.min.js') }}
-    {{ HTML::script('public/js/ajaxfileupload.js') }}
     {{ HTML::script('public/js/main.js') }}
 
     @section('extraJs')

@@ -49,7 +49,7 @@ class Image {
 		
 		foreach ($this->image_sizes as $size => $value) {
 
-			$tempFilename = uniqid() . '.jpg';
+			$tempFilename = uniqid() . '.png';
 
 			$fileName = $this->absPath . $tempDir . '\\' . $tempFilename;
 
@@ -58,7 +58,7 @@ class Image {
 			\Image::make($this->image->getRealPath())->grab($value['width'], $value['height'])->save($fileName);			
 		}
 		
-		$baseFileName = uniqid() . '.jpg';
+		$baseFileName = uniqid() . '.png';
 
 		\Image::make($this->image->getRealPath())->save($this->absPath . $tempDir .  '\\' . $baseFileName);
 

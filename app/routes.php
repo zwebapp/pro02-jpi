@@ -34,7 +34,11 @@ Route::post('admin/login', function(){
  	return Redirect::to('admin/login')->with('login_errors', true);
 });
 
-
+Route::get('/logout', function() {
+	Auth::logout();
+	Session::flush();
+	return Redirect::to('/');
+});
 
 // Administrator Pages
 
@@ -132,12 +136,6 @@ Route::group(array('before' => 'adminAuth'), function () {
 	Route::post('admin/manage/save', 'Admin@save' );
 	Route::get('admin/manage/add', 'Admin@add');
 	
-	Route::get('/logout', function() {
-		Auth::logout();
-		Session::flush();
-		return Redirect::to('/');
-	});
-
 });
 
 // end Administrator Group -------------------------------------
@@ -154,6 +152,12 @@ Route::post('client/login', function(){
 
  	if ( Auth::attempt($userdata) ) {
  		$user = User::find(Auth::user()->id);
+
+ 		if (! Auth::user()->client->is_verified) {
+ 			Auth::logout();
+ 			return Redirect::back()->with('login_errors', true);
+ 		}
+
  		$user->last_logged_in =  new DateTime;
  		$user->save();
 
@@ -180,3 +184,14 @@ Route::post('orders/additemtobasket', 'Orders@addItemToBasket');
 Route::get('order/checkout', 'Orders@proceedCheckout');
 Route::get('order/remove{id}', 'Orders@removeItem');
 Route::post('order/submit', 'Orders@submit');
+
+
+Route::get('register', 'Clients@clientRegister');
+Route::post('register/submit', 'Clients@clientSubmit');
+Route::get('register/finalize', 'Clients@finalizeRegistration');
+Route::post('register/verify/{hash}/{id}', 'Clients@verify');
+
+Route::get('forgot-password', function(){
+	return View::make('client.forgotpassword');
+});
+Route::post('password-reset', 'Clients@changePassword');

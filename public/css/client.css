@@ -6,7 +6,10 @@ header{ border-bottom: 5px solid #0c8cb1; margin-top: 20px; overflow: hidden; }
 
 header .pull-right { text-align: right;  }
 header .pull-right .auth { margin-top: 10px; }
+header .pull-right .auth form { margin-bottom: 5px;  }
+header .pull-right .auth .reg-for a { color: #08c; font-size: 11px; }
 header .pull-right .auth .greet { font-size: 32px; font-weight: bold; margin-top: 10px; }
+
 
 nav { margin-top: 40px; }
 nav .nav { margin-bottom: 10px; overflow: hidden; }
@@ -75,6 +78,31 @@ nav li a{ color: #7997C5;font-size: 12px; }
 
 .flex-control-paging li a.flex-active { background: #27a5c5; }
 .flex-control-paging li a { background: #b2c0e1;  }
+
+
+
+
+
+
+.registration-form { margin: 40px 0 0 0; }
+.registration-form .nav-tabs { border: medium none; margin: 0 0 0 20px; }
+.registration-form .nav-tabs>li { margin: 0 20px 0 0; text-align: center; width: 350px; -webkit-box-shadow: 0 0 10px #999; }
+.registration-form .nav-tabs>li.active { background-color: #0c8cb1; }
+.registration-form .nav-tabs>li>a { border: medium none; font-size: 12px; padding: 4px}
+.registration-form .nav-tabs>li>a:hover { border: medium none; background-color: inherit;}
+.registration-form .nav-tabs>.active>a { background-color: #0c8cb1; color: #FFFFFF; }
+
+.registration-form .tab-content {background-color: #0c8cb1;padding: 10px; -webkit-box-shadow: 0 0 15px #444;-webkit-border-radius: 15px;}
+.registration-form .tab-content .tab-pane  {background-color: #dce0e1;padding: 30px;-webkit-border-radius: 15px;}
+.registration-form .tab-content .tab-pane .control-group { margin-bottom: 0;}
+
+
+
+
+
+
+
+
 
 
 

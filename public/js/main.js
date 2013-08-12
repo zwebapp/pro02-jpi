@@ -20,6 +20,15 @@ jQuery('document').ready(function($) {
       btnNext: ".next",
       btnPrev: ".prev"
   });
+
+  $('#myTab a').click(function (e) {
+  	e.preventDefault();
+  	$(this).tab('show');
+	});
+
+	$('#datetimepicker').datetimepicker({
+      pickTime: false
+    });
 });
 
  $(window).load(function() {

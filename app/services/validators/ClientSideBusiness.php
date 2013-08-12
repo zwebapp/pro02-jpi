@@ -4,7 +4,7 @@
 /**
 * 	
 */
-class ClientPersonal extends Validator {
+class ClientSideBusiness extends Validator {
 	
 	public static $rules = array(
 
@@ -12,12 +12,13 @@ class ClientPersonal extends Validator {
 		'password'                 => 'required|confirmed|min:6',
 		'lastname'                 => 'required',
 		'firstname'                => 'required',
-		'image'                    => 'required|image|max:3000',
+		'image'                    => 'required|image|max:5000',
 		'email'                    => 'email|required|unique:clients',
-		'birthday'                 => 'required',
-		'address'                  => 'required',
+		'company_name'             => 'required',
+		'company_address'          => 'required',
 		'contact_no'               => 'required',
-		'security_question_answer' => 'required'
+		'security_question_answer' => 'required',
+		'terms'                    => 'accepted'
 
 	);
 

@@ -4,7 +4,7 @@
 /**
 * 	
 */
-class ClientPersonal extends Validator {
+class ClientSidePersonal extends Validator {
 	
 	public static $rules = array(
 
@@ -17,7 +17,8 @@ class ClientPersonal extends Validator {
 		'birthday'                 => 'required',
 		'address'                  => 'required',
 		'contact_no'               => 'required',
-		'security_question_answer' => 'required'
+		'security_question_answer' => 'required',
+		'terms'                    => 'accepted'
 
 	);
 

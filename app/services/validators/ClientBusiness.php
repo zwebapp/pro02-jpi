@@ -12,6 +12,7 @@ class ClientBusiness extends Validator {
 		'password'                 => 'required|confirmed|min:6',
 		'lastname'                 => 'required',
 		'firstname'                => 'required',
+		'image'                    => 'required|image|max:5000',
 		'email'                    => 'email|required|unique:clients',
 		'company_name'             => 'required',
 		'company_address'          => 'required',

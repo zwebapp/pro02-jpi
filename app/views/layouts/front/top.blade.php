@@ -18,8 +18,13 @@
 			  {{ Form::submit('Login', array('class' => 'btn')) }}
 				
 			{{ Form::close() }}
+			<div class="reg-for">
+				{{HTML::link('/register', 'Register')}} | {{HTML::link('forgot-password', 'Forgot Password?')}}
+			</div>
 			@else 
-				{{HTML::link('logout', 'Logout')}}
+				<div class="reg-for">
+					{{HTML::link('logout', 'My Account')}} | {{HTML::link('logout', 'Logout')}}
+				</div>
 				<p class="greet"> Welcome {{ Auth::user()->client->company_name ?: Auth::user()->client->firstname }} </p>
 			@endif
 
