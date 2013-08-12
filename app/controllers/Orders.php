@@ -96,6 +96,10 @@ class Orders extends BaseController {
 
 	public function submit()
 	{
+		if(! Session::has('orders')) {
+			return Redirect::back();
+		}
+
 		$inputs = array();
 		$delivery_address = Input::get('delivery_address');
 
@@ -104,14 +108,15 @@ class Orders extends BaseController {
 		$inputs['client_id'] = Auth::user()->client->id;
 		$inputs['lookup_status'] = 1;
 
-		$order = Order::create($inputs);
+		$order = Order::create($inputs)->toArray();
 
 		Session::forget('orders');
 
-		Mail::send('emails.order', $order, function($message)
+		$recipient = Setting::find(1);
+
+		Mail::send('emails.order', array('order' => $order), function($message) use ($recipient)
 		{
-				$recipient = Setting::find(1);
-		    $message->to($recipient->recipients, 'System Administrator')->subject('Welcome!');
+		    $message->to($recipient->recipients, 'System Administrator')->subject('JPI Application Order form');
 		});
 
 		return View::make('client.orders.thankyou');

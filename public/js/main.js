@@ -29,6 +29,11 @@ jQuery('document').ready(function($) {
 	$('#datetimepicker').datetimepicker({
       pickTime: false
     });
+
+	$('#modalBox').on('hide', function () {
+      document.location.reload(true);
+  });
+
 });
 
  $(window).load(function() {

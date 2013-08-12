@@ -95,10 +95,23 @@ nav li a{ color: #7997C5;font-size: 12px; }
 .registration-form .tab-content {background-color: #0c8cb1;padding: 10px; -webkit-box-shadow: 0 0 15px #444;-webkit-border-radius: 15px;}
 .registration-form .tab-content .tab-pane  {background-color: #dce0e1;padding: 30px;-webkit-border-radius: 15px;}
 .registration-form .tab-content .tab-pane .control-group { margin-bottom: 0;}
+.registration-form .file-upload .thumbnail img { height: auto; width: 100%;}
 
 
 
 
+.profile { height: 500px; margin: 50px 0 0 0;}
+.profile .span3 { height: 100%;}
+.profile .info{ border: 3px solid #0c8cb1; height: 100%; position: relative; -moz-border-radius: 5px;-webkit-border-radius: 5px; }
+.profile .info .avatar{ position: relative; text-align: center; top: -25px; }
+.profile .info .avatar img{ -webkit-box-shadow: 3px 3px 5px #AAAAAA; -moz-box-shadow: 3px 3px 5px #AAAAAA; box-shadow: 3px 3px 5px #AAAAAA; }
+.profile .info .details { color: #444444; padding: 0 20px; }
+.profile .info .details { color: #444444; padding: 0 20px; }
+.profile .info .details h6 { margin: 0 0 10px; text-align: center;}
+.profile .info .details h4 { margin: 20px 0 0 0; }
+.profile .info .details p { color: #999999; font-style: italic; font-size: 12px; }
+.profile .pending>td { background-color: #fcf8e3!important; font-weight: bold; }
+.profile .rejected>td { background-color: #cccccc!important;  }
 
 
 

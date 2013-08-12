@@ -38,7 +38,7 @@ JJED | JPI @show</title>
     </div>
 
 
-    @if(! Auth::guest() && Auth::user()->is_client == TRUE )
+    @if( (!Auth::guest() && Auth::user()->is_client == false) || Session::has('orders'))
       @include('_partials.cart');
     @endif
 

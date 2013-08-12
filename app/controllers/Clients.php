@@ -173,8 +173,7 @@ class Clients extends BaseController {
 
 	public function changePassword()
 	{
-
-		$client = Client::where('email', Input::get('email'))->firstOrFail();
+		$client = Client::where('email', Input::get('email'))->first();
 
 		if ($client->count() == 0) {
 			Notification::error('Email not found');
@@ -194,8 +193,29 @@ class Clients extends BaseController {
 		});
 
 		return View::make('client.reset-password-confirmation');
+	}
 
+	public function profile()
+	{
+		return View::make('client.clients.profile', array('orders' => Order::where('client_id', Auth::user()->client->id)->orderBy('created_at', 'desc')->paginate(10)));
+	}
 
+	public function orderInfo($id)
+	{
+		$order = Order::find($id);
+
+		return View::make('client.clients.order-info', array('products' => json_decode($order->products, TRUE)));
+	}
+
+	public function cancelOrder($id)
+	{
+		$order = Order::findOrFail($id);
+
+		$order->lookup_status = 5;
+
+		$order->save();
+
+		return Redirect::back();
 	}
 
 }

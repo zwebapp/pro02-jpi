@@ -23,7 +23,7 @@
 			</div>
 			@else 
 				<div class="reg-for">
-					{{HTML::link('logout', 'My Account')}} | {{HTML::link('logout', 'Logout')}}
+					{{HTML::link('profile', 'My Account')}} | {{HTML::link('logout', 'Logout')}}
 				</div>
 				<p class="greet"> Welcome {{ Auth::user()->client->company_name ?: Auth::user()->client->firstname }} </p>
 			@endif

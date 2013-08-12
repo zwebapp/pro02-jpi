@@ -1,4 +1,4 @@
-{{ Form::open(array('action' =>  Session::has('edit') ? 'Clients@update' : 'Clients@save', 'method' => 'get', 'class' => 'with-upload form-horizontal')) }}
+{{ Form::open(array('action' =>  Session::has('edit') ? 'Clients@update' : 'Clients@save', 'method' => 'get', 'file' => TRUE, 'class' => 'with-upload form-horizontal')) }}
 
 <div class="wrapper">
   <h4> {{  Session::has('edit') ? "Edit " : "Add new " }} company client </h4>

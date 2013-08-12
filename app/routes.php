@@ -142,7 +142,9 @@ Route::group(array('before' => 'adminAuth'), function () {
 
 
 Route::filter('clientAuth', function() {
- if (Auth::guest()) return Redirect::back();
+ if (Auth::guest()) {
+ 		return "<script>alert('Please login first'); history.back(1);</script>";
+ }
 });
 
 
@@ -181,9 +183,7 @@ Route::get('products/category/{id}', 'Products@clientShowCategory');
 Route::get('products/{id}', 'Products@clientShowProduct');
 
 Route::post('orders/additemtobasket', 'Orders@addItemToBasket');
-Route::get('order/checkout', 'Orders@proceedCheckout');
 Route::get('order/remove{id}', 'Orders@removeItem');
-Route::post('order/submit', 'Orders@submit');
 
 
 Route::get('register', 'Clients@clientRegister');
@@ -195,3 +195,20 @@ Route::get('forgot-password', function(){
 	return View::make('client.forgotpassword');
 });
 Route::post('password-reset', 'Clients@changePassword');
+
+
+
+
+
+
+
+
+Route::group(array('before' => 'clientAuth'), function () {
+	
+	Route::get('order/checkout', 'Orders@proceedCheckout');
+	Route::post('order/submit', 'Orders@submit');
+	Route::get('profile/order/{id}', 'Clients@orderInfo');
+	Route::get('profile', 'Clients@profile');
+	Route::get('profile/order/{id}/cancel', 'Clients@cancelOrder');
+
+});

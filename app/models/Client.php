@@ -15,4 +15,9 @@ class Client extends Eloquent {
    	{
    		return $this->belongsTo('Lookup', 'lookup_user_type');
    	}
+
+    public function orders()
+    {
+      return $this->hasMany('Order');
+    }
 }
